@@ -54,7 +54,6 @@ public class ItemConductor extends ItemBase{
     public static String name = "conductor_dummy";
 
     public static String owner_name = "owner_name";
-    //    public static String is_active = "is_active";
 
     TextComponentTranslation owner = new TextComponentTranslation("tooltip." + Main.MODID + "." + name + ".owner");
     TextComponentTranslation charge = new TextComponentTranslation("tooltip." + Main.MODID + "." + name + ".charge");
@@ -65,23 +64,6 @@ public class ItemConductor extends ItemBase{
     public ItemConductor(String name) {
         super(name);
     }
-
-    //    @Override
-    //    @SideOnly(Side.CLIENT)
-    //    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-    //        if (this.isInCreativeTab(tab)) {
-    //            ItemStack stack = new ItemStack(this);
-    //            stack.getOrCreateSubCompound(Main.MODID).setBoolean(is_active, false);
-    //            items.add(stack);
-    //        }
-    //    }
-    //
-    //    @Override
-    //    public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn) {
-    //        if(stack.getSubCompound(Main.MODID) == null) {
-    //            stack.getOrCreateSubCompound(Main.MODID).setBoolean(is_active, false);
-    //        }
-    //    }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
@@ -97,10 +79,7 @@ public class ItemConductor extends ItemBase{
 
             NBTTagCompound nbt = playerIn.getHeldItem(handIn).getOrCreateSubCompound(Main.MODID);
 
-            //                nbt.setBoolean(is_active, true);
             nbt.setString(owner_name, playerIn.getName());
-            nbt.setInteger(MRULattice.name, playerIn.getCapability(CapabilityMRULattice.CAP, null).getAmount());
-            nbt.setInteger(MRUStorage.name, playerIn.getCapability(CapabilityMRUStorage.CAP, null).getAmount());
 
             return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
 
@@ -119,34 +98,16 @@ public class ItemConductor extends ItemBase{
         if(Minecraft.getMinecraft().player != null) {
             if (stack.getSubCompound(Main.MODID) != null) {
 
-                String current_name = stack.getSubCompound(Main.MODID).getString(owner_name);
-                EntityPlayer current_player = Minecraft.getMinecraft().world.getPlayerEntityByName(current_name);
-
-                int true_charge = 0;
-                int true_lattice = 0;
-
-                //                if (Minecraft.getMinecraft().player.equals(current_player)) {
-                //                    true_charge = current_player.getCapability(CapabilityMRUStorage.CAP, null).getAmount();
-                //                    true_lattice = current_player.getCapability(CapabilityMRULattice.CAP, null).getAmount();
-                //                    stack.getSubCompound(Main.MODID).setInteger(MRUStorage.name, true_charge);
-                //                    stack.getSubCompound(Main.MODID).setInteger(MRULattice.name, true_lattice);
-                //                } else if (worldIn.getMinecraftServer().getPlayerList().getPlayerByUsername(current_name) != null){
-                //                    EntityPlayer player = worldIn.getMinecraftServer().getPlayerList().getPlayerByUsername(current_name);
-                //                    true_charge = worldIn.getMinecraftServer().getPlayerList().getPlayerByUsername(current_name).getCapability(CapabilityMRUStorage.CAP, null).getAmount();
-                //                    true_lattice = worldIn.getMinecraftServer().getPlayerList().getPlayerByUsername(current_name).getCapability(CapabilityMRULattice.CAP, null).getAmount();
-                //                    stack.getSubCompound(Main.MODID).setInteger(MRUStorage.name, true_charge);
-                //                    stack.getSubCompound(Main.MODID).setInteger(MRULattice.name, true_lattice);
-                //                } else {
-                //                    true_charge = stack.getSubCompound(Main.MODID).getInteger(MRUStorage.name);
-                //                    true_lattice = stack.getSubCompound(Main.MODID).getInteger(MRULattice.name);
-                //                }
-
-                //                                int true_charge = Minecraft.getMinecraft().player.equals(player) ? player.getCapability(CapabilityMRUStorage.CAP, null).getAmount() : stack.getSubCompound(Main.MODID).getInteger(MRUStorage.name);
-                //                                int true_lattice = Minecraft.getMinecraft().player.equals(player) ? player.getCapability(CapabilityMRULattice.CAP, null).getAmount() : stack.getSubCompound(Main.MODID).getInteger(MRULattice.name);
-
                 tooltip.add(this.owner.getFormattedText() + " " + stack.getSubCompound(Main.MODID).getString(owner_name));
-                tooltip.add(this.charge.getFormattedText() + " " + true_charge + " MRU");
-                tooltip.add(this.coherence.getFormattedText() + " " + true_lattice + "%");
+
+                String name = stack.getSubCompound(Main.MODID).getString(owner_name);
+                EntityPlayer player = Minecraft.getMinecraft().world.getPlayerEntityByName(name);
+
+                if(Minecraft.getMinecraft().player.equals(player)) {
+
+                    tooltip.add(this.charge.getFormattedText() + " " + player.getCapability(CapabilityMRUStorage.CAP, null).getAmount() + " MRU");
+                    tooltip.add(this.coherence.getFormattedText() + " " + player.getCapability(CapabilityMRULattice.CAP, null).getAmount() + "%");
+                }
             } else {
 
                 tooltip.add(this.inactive.getFormattedText());

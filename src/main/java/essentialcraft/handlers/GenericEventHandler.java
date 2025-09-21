@@ -10,7 +10,7 @@ import essentialcraft.api.MRUStorage;
 import essentialcraft.api.MRUStorageProvider;
 import essentialcraft.api.Main;
 import essentialcraft.common.items.ItemConductor;
-import essentialcraft.network.packets.ExamplePacket;
+import essentialcraft.common.items.ItemCrowbar;
 import essentialcraft.network.packets.Network;
 import essentialcraft.network.packets.PacketUpdateLattice;
 import essentialcraft.network.packets.PacketUpdateStorage;
@@ -76,6 +76,21 @@ public class GenericEventHandler {
             storage.addAmount((int) entity.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).getAttributeValue());
             Network.sendToPlayer(new PacketUpdateStorage(storage.getAmount()), (EntityPlayerMP) player);
 
+        }
+    }
+
+    @SubscribeEvent
+    public static void crushBones(LivingDeathEvent event) {
+
+        EntityLivingBase entity = event.getEntityLiving();
+        if (event.getSource().getTrueSource() instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
+            ItemStack stack  = player.getHeldItem(player.getActiveHand());
+            if (stack.getItem() instanceof ItemCrowbar) {
+                if (entity.getEntityWorld().rand.nextInt(4) == 1) {
+                    entity.entityDropItem(new ItemStack(Items.DYE, 1 + entity.getEntityWorld().rand.nextInt(3), 15), 0.0F);
+                }
+            }
         }
     }
 }

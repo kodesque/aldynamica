@@ -1,0 +1,7 @@
+{
+  "essentialcraft:crowbar_hit": {
+    "sounds": [
+      "essentialcraft:sounds/crowbar_hit.ogg"
+    ]
+  }
+}

@@ -27,7 +27,6 @@ import org.apache.logging.log4j.Logger;
 import essentialcraft.handlers.ExampleConfig;
 import essentialcraft.handlers.GenericEventHandler;
 import essentialcraft.init.ItemInit;
-import essentialcraft.network.packets.ExamplePacket;
 import essentialcraft.network.packets.Network;
 import essentialcraft.network.proxy.CommonProxy;
 
