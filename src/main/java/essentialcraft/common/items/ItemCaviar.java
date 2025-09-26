@@ -19,6 +19,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemCaviar extends ItemBase {
 
+    public static String name = "silverfish_caviar";
+
     public ItemCaviar(String name) {
         super(name);
     }

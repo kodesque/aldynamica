@@ -1,6 +1,9 @@
 item.essentialcraft.conductor_dummy.name=Conductor Dummy
 item.essentialcraft.silverfish_caviar.name=Silverfish Caviar
 item.essentialcraft.soldering_crowbar.name=Soldering Crowbar
+item.essentialcraft.dull_pill.name=Dull Pill
+item.essentialcraft.digestable_polymer.name=Digestable Polymer
+item.essentialcraft.attribute_mold.name=Attribute Mold
 itemGroup.tabEssentialCraft=Essential Craft
 
 tooltip.essentialcraft.conductor_dummy.inactive=§7Bind with §5[Shift + RMB] §7while in hand

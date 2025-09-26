@@ -63,6 +63,7 @@ public class ItemConductor extends ItemBase{
 
     public ItemConductor(String name) {
         super(name);
+        this.setMaxStackSize(1);
     }
 
     @Override
