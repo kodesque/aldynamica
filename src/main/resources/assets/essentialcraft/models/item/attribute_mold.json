@@ -2,5 +2,11 @@
   "parent": "item/generated",
   "textures": {
     "layer0": "essentialcraft:items/attribute_mold"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": { "essentialcraft:bound": 1 },
+      "model": "essentialcraft:item/attribute_mold_bound"
+    }
+  ]
 }

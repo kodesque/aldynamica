@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 import javax.swing.text.html.parser.Entity;
 
 import essentialcraft.api.Main;
+import essentialcraft.common.basic.ItemBase;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;

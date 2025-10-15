@@ -2,8 +2,8 @@ package essentialcraft.util;
 
 public interface IAttributeImprint extends IBaseArithmetic {
 
-    public int getRequiredAmount();
+    void setStoringTypeAndRequiredAmount(boolean isKeeping, int requiredAmount);
 
-    void setRequiredAmount(int requiredAmount);
+    int getRequiredAmount();
 
 }

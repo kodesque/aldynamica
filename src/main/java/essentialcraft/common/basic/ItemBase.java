@@ -1,4 +1,4 @@
-package essentialcraft.common.items;
+package essentialcraft.common.basic;
 
 import essentialcraft.api.Main;
 import essentialcraft.init.ItemInit;

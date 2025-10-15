@@ -48,7 +48,7 @@ public class ItemCrowbar extends ItemPickaxe implements IHasModel, ILeavesImprin
     }
 
     public static String name = "soldering_crowbar";
-    public static int requiredImprint = 10;
+    public static int requiredImprint = 100;
 
     TextComponentTranslation description = new TextComponentTranslation("tooltip." + Main.MODID + "." + name + ".description");
 
@@ -74,17 +74,26 @@ public class ItemCrowbar extends ItemPickaxe implements IHasModel, ILeavesImprin
 
         if (player.isSneaking()) {
             if(worldIn.getBlockState(pos).getBlock().equals(Blocks.ANVIL)) {
+
                 IBlockState anvil = worldIn.getBlockState(pos);
                 ItemStack stack = player.getHeldItemOffhand();
-                int amount = anvil.getValue(BlockAnvil.DAMAGE);
 
-                if (amount != 0) {
+                int amount = anvil.getValue(BlockAnvil.DAMAGE);
+                boolean pass = false;
+
+                if (!player.isCreative()) {
                     if (stack.getItem().equals(Item.getItemFromBlock(Blocks.IRON_BLOCK))
                             && stack.getCount() >= amount) {
-                        worldIn.setBlockState(pos, anvil.withProperty(BlockAnvil.DAMAGE, amount - amount));
                         stack.shrink(amount);
-                        return EnumActionResult.PASS;
+                        pass = true;
                     }
+                } else {
+                    pass = true;
+                }
+
+                if (pass) {
+                    worldIn.setBlockState(pos, anvil.withProperty(BlockAnvil.DAMAGE, amount - amount));
+                    return EnumActionResult.SUCCESS;
                 }
             }
         }
@@ -102,6 +111,11 @@ public class ItemCrowbar extends ItemPickaxe implements IHasModel, ILeavesImprin
     @Override
     public void registerModels() {
         Main.proxy.registerItemRenderer(this, 0, "inventory");
+    }
+
+    @Override
+    public int getRequiredImprint() {
+        return ItemCrowbar.requiredImprint;
     }
 
 }

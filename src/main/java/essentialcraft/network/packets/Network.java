@@ -1,6 +1,7 @@
 package essentialcraft.network.packets;
 
 import essentialcraft.api.Main;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -27,10 +28,21 @@ public class Network {
                 packetId++,
                 Side.CLIENT
                 );
+
+        INSTANCE.registerMessage(
+                PacketBindMold.Handler.class,
+                PacketBindMold.class,
+                packetId++,
+                Side.SERVER
+                );
     }
 
-    public static void sendToPlayer(IMessage msg, EntityPlayerMP player) {
+    public static void sendToPlayerMP(IMessage msg, EntityPlayerMP player) {
         INSTANCE.sendTo(msg, player);
+    }
+
+    public static void sendToPlayerSP(IMessage msg) {
+        INSTANCE.sendToServer(msg);
     }
 
 }

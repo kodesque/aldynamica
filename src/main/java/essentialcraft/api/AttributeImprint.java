@@ -7,7 +7,12 @@ import net.minecraft.nbt.NBTTagCompound;
 public class AttributeImprint implements IAttributeImprint{
 
     private int amount = 0;
-    public int requiredAmount = 0;
+    private int requiredAmount = 0;
+    private boolean isKeeping = false;
+
+    private static final String maxImprint = "required_amount";
+    private static final String storageType = "is_keeping";
+
     public static final String name = "attribute_imprint";
 
     public void throwException() {
@@ -15,17 +20,19 @@ public class AttributeImprint implements IAttributeImprint{
     }
 
     @Override
-    public int getRequiredAmount() {
-        return this.requiredAmount;
-    }
+    public void setStoringTypeAndRequiredAmount(boolean isKeeping, int requiredAmount) {
+        this.isKeeping = isKeeping;
 
-    @Override
-    public void setRequiredAmount(int requiredAmount) {
         if (requiredAmount < 0) {
             this.throwException();
         } else {
             this.requiredAmount = requiredAmount;
         }
+    }
+
+    @Override
+    public int getRequiredAmount() {
+        return this.requiredAmount;
     }
 
     @Override
@@ -44,8 +51,17 @@ public class AttributeImprint implements IAttributeImprint{
 
     @Override
     public void addAmount(int amount) {
-        if (amount < 0 || amount > this.requiredAmount || this.amount+amount > this.requiredAmount) {
+
+        if (amount < 0) {
             this.throwException();
+        }
+
+        if (!this.isKeeping) {
+            if (amount > this.requiredAmount || this.amount+amount > this.requiredAmount) {
+                this.amount = this.requiredAmount;
+            } else {
+                this.amount += amount;
+            }
         } else {
             this.amount += amount;
         }
@@ -63,11 +79,16 @@ public class AttributeImprint implements IAttributeImprint{
     public NBTTagCompound serializeNBT() {
         NBTTagCompound tag = new NBTTagCompound();
         tag.setInteger(name, this.amount);
+        tag.setInteger(maxImprint, this.requiredAmount);
+        tag.setBoolean(storageType, this.isKeeping);
         return tag;
     }
 
     public NBTTagCompound deserializeNBT(NBTTagCompound nbt) {
         this.amount = nbt.getInteger(name);
+        this.requiredAmount = nbt.getInteger(maxImprint);
+        this.isKeeping = nbt.getBoolean(storageType);
+
         return nbt;
     }
 

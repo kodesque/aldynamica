@@ -1,15 +1,28 @@
+#ITEMS
 item.essentialcraft.conductor_dummy.name=Conductor Dummy
-item.essentialcraft.silverfish_caviar.name=Silverfish Caviar
-item.essentialcraft.soldering_crowbar.name=Soldering Crowbar
-item.essentialcraft.dull_pill.name=Dull Pill
-item.essentialcraft.digestable_polymer.name=Digestable Polymer
 item.essentialcraft.attribute_mold.name=Attribute Mold
+
+item.essentialcraft.soldering_crowbar.name=Soldering Crowbar
+
+item.essentialcraft.silverfish_caviar.name=Silverfish Caviar
+item.essentialcraft.dull_pill.name=Dull Pill
+
+item.essentialcraft.digestable_polymer.name=Digestable Polymer
+item.essentialcraft.polymer_clay.name=Polymer Clay
+
+item.essentialcraft.apple.name=Apple
+
+#CREATIVE TAB
 itemGroup.tabEssentialCraft=Essential Craft
 
+#TOOLTIPS
 tooltip.essentialcraft.conductor_dummy.inactive=§7Bind with §5[Shift + RMB] §7while in hand
-
 tooltip.essentialcraft.conductor_dummy.owner=Owner:
 tooltip.essentialcraft.conductor_dummy.charge=Lattice charge:
 tooltip.essentialcraft.conductor_dummy.coherence=Lattice coherence:
+
+tooltip.essentialcraft.attribute_mold.bound_item=Bound with:
+tooltip.essentialcraft.attribute_mold.imprint=Imprint:
+tooltip.essentialcraft.attribute_mold.inactive=§7Bind with §5[RMB] §7in inventory
 
 tooltip.essentialcraft.soldering_crowbar.description=§7§oRepairs anvils, attunes machines and crushes bones

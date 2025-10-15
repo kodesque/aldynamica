@@ -16,6 +16,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -46,6 +47,8 @@ public class Main {
         CapabilityMRUStorage.register();
         CapabilityMRULattice.register();
         Network.registerPackets();
+
+        //        GameRegistry.registerTileEntity(null, new ResourceLocation(MODID, ""));
     }
 
     @EventHandler

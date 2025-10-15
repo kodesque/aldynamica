@@ -16,6 +16,7 @@ import essentialcraft.api.MRULattice;
 import essentialcraft.api.MRUStorage;
 import essentialcraft.api.MRUStorageProvider;
 import essentialcraft.api.Main;
+import essentialcraft.common.basic.ItemBase;
 import essentialcraft.handlers.GenericEventHandler;
 import essentialcraft.init.ItemInit;
 import essentialcraft.network.packets.Network;
@@ -74,8 +75,8 @@ public class ItemConductor extends ItemBase{
             if (!worldIn.isRemote) {
                 IMRULattice lattice = playerIn.getCapability(CapabilityMRULattice.CAP, null);
                 IMRUStorage charge = playerIn.getCapability(CapabilityMRUStorage.CAP, null);
-                Network.sendToPlayer(new PacketUpdateLattice(lattice.getAmount()), (EntityPlayerMP) playerIn);
-                Network.sendToPlayer(new PacketUpdateStorage(charge.getAmount()), (EntityPlayerMP) playerIn);
+                Network.sendToPlayerMP(new PacketUpdateLattice(lattice.getAmount()), (EntityPlayerMP) playerIn);
+                Network.sendToPlayerMP(new PacketUpdateStorage(charge.getAmount()), (EntityPlayerMP) playerIn);
             }
 
             NBTTagCompound nbt = playerIn.getHeldItem(handIn).getOrCreateSubCompound(Main.MODID);

@@ -3,7 +3,8 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"5": "minecraft:blocks/bone_block_side",
-		"6": "essentialcraft:blocks/pill"
+		"6": "essentialcraft:blocks/pill"        ,
+                "particle": "essentialcraft:blocks/pill"
 	},
 	"elements": [
 		{
