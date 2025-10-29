@@ -2,10 +2,12 @@ package essentialcraft.handlers;
 
 import essentialcraft.init.BlockInit;
 import essentialcraft.init.ItemInit;
+import essentialcraft.init.PotionInit;
 import essentialcraft.init.TileEntityInit;
 import essentialcraft.util.IHasModel;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -23,6 +25,11 @@ public class RegistryHandler {
     @SubscribeEvent
     public static void onBlockRegister(RegistryEvent.Register<Block> event) {
         event.getRegistry().registerAll(BlockInit.BLOCKS.toArray(new Block[0]));
+    }
+
+    @SubscribeEvent
+    public static void onPotionRegister(RegistryEvent.Register<Potion> event) {
+        event.getRegistry().registerAll(PotionInit.POTIONS.toArray(new Potion[0]));
     }
 
     @SubscribeEvent
