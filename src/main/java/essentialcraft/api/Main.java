@@ -3,6 +3,7 @@ package essentialcraft.api;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.obj.OBJLoader;
@@ -25,6 +26,8 @@ import java.io.File;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import essentialcraft.common.tiles.TileEntityWheelBase;
+import essentialcraft.common.tiles.TileEntityWheelFiller;
 import essentialcraft.handlers.ExampleConfig;
 import essentialcraft.handlers.GenericEventHandler;
 import essentialcraft.init.ItemInit;
@@ -42,13 +45,16 @@ public class Main {
     @SidedProxy(clientSide = "essentialcraft.network.proxy.ClientProxy", serverSide = "essentialcraft.network.proxy.CommonProxy")
     public static CommonProxy proxy;
 
+
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         CapabilityMRUStorage.register();
         CapabilityMRULattice.register();
         Network.registerPackets();
 
-        //        GameRegistry.registerTileEntity(null, new ResourceLocation(MODID, ""));
+
+        GameRegistry.registerTileEntity(TileEntityWheelBase.class, new ResourceLocation(MODID, "wheel"));
+        GameRegistry.registerTileEntity(TileEntityWheelFiller.class, new ResourceLocation(MODID, "filler"));
     }
 
     @EventHandler

@@ -2,60 +2,69 @@ package essentialcraft.common.tiles;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.NonNullList;
 
 public class TileEntityWheelBase extends TileEntity implements ITickable, ISidedInventory{
 
+    private NonNullList<ItemStack> containerContents = NonNullList.<ItemStack>withSize(3, ItemStack.EMPTY);
+
+    public TileEntityWheelBase()
+    {
+    }
+
     @Override
     public int getSizeInventory() {
-        // TODO Auto-generated method stub
-        return 0;
+        return 3;
     }
 
     @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        return false;
+        for (ItemStack itemstack : this.containerContents)
+        {
+            if (!itemstack.isEmpty())
+                return false;
+        }
+
+        return true;
     }
 
     @Override
     public ItemStack getStackInSlot(int index) {
-        // TODO Auto-generated method stub
-        return null;
+        return this.containerContents.get(index);
     }
 
     @Override
     public ItemStack decrStackSize(int index, int count) {
-        // TODO Auto-generated method stub
-        return null;
+        return ItemStackHelper.getAndSplit(this.containerContents, index, count);
     }
 
     @Override
     public ItemStack removeStackFromSlot(int index) {
-        // TODO Auto-generated method stub
-        return null;
+        return ItemStackHelper.getAndRemove(this.containerContents, index);
     }
 
     @Override
     public void setInventorySlotContents(int index, ItemStack stack) {
         // TODO Auto-generated method stub
-
     }
 
     @Override
     public int getInventoryStackLimit() {
         // TODO Auto-generated method stub
-        return 0;
+        return 64;
     }
 
     @Override
     public boolean isUsableByPlayer(EntityPlayer player) {
         // TODO Auto-generated method stub
-        return false;
+        return true;
     }
 
     @Override
@@ -72,7 +81,8 @@ public class TileEntityWheelBase extends TileEntity implements ITickable, ISided
 
     @Override
     public boolean isItemValidForSlot(int index, ItemStack stack) {
-        // TODO Auto-generated method stub
+        if (stack.getItem() instanceof ItemSword)
+            return true;
         return false;
     }
 
@@ -102,8 +112,7 @@ public class TileEntityWheelBase extends TileEntity implements ITickable, ISided
 
     @Override
     public String getName() {
-        // TODO Auto-generated method stub
-        return null;
+        return "container.wheel";
     }
 
     @Override
@@ -135,7 +144,4 @@ public class TileEntityWheelBase extends TileEntity implements ITickable, ISided
         // TODO Auto-generated method stub
 
     }
-
-
-
 }

@@ -3,21 +3,32 @@ package essentialcraft.common.tiles;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
 
 public class TileEntityWheelFiller extends TileEntity implements ITickable, ISidedInventory{
 
+    public static String corePosKey = "corePos";
+    BlockPos corePos = null;
+
+    public BlockPos getCorePos() {
+        return this.corePos;
+    }
+
+    public void setCorePos(BlockPos corePos) {
+        this.corePos = corePos;
+    }
+
     @Override
     public int getSizeInventory() {
-        // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
         return false;
     }
 
@@ -133,6 +144,21 @@ public class TileEntityWheelFiller extends TileEntity implements ITickable, ISid
     public void update() {
         // TODO Auto-generated method stub
 
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound compound)
+    {
+        super.readFromNBT(compound);
+        this.corePos = BlockPos.fromLong(compound.getLong(corePosKey));
+    }
+
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound compound)
+    {
+        super.writeToNBT(compound);
+        compound.setLong(corePosKey, this.corePos.toLong());
+        return compound;
     }
 
 }

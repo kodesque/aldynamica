@@ -2,8 +2,11 @@ package essentialcraft.common.blocks;
 
 import java.util.ArrayList;
 
+import javax.annotation.Nullable;
+
 import essentialcraft.api.Main;
 import essentialcraft.common.tiles.TileEntityWheelBase;
+import essentialcraft.common.tiles.TileEntityWheelFiller;
 import essentialcraft.init.BlockInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -17,8 +20,10 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -80,18 +85,26 @@ public class BlockWheelBase extends BlockContainer {
     @Override
     public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side)
     {
+        return this.handleStructure(worldIn, pos, side, funcType.ASSEMBLE);
+    }
 
-        boolean checkSides = false;
-        boolean checkCorners = false;
+    public enum funcType {
+        ASSEMBLE,
+        DISASSEMBLE,
+        CHECK
+    }
+
+    public boolean handleStructure(World worldIn, BlockPos corePos, EnumFacing side, funcType type) {
 
         ArrayList<EnumFacing> sides = new ArrayList<EnumFacing>();
-        ArrayList<EnumFacing> corners = new ArrayList<EnumFacing>();
 
-        BlockPos anchorPos = pos;
+        BlockPos anchorPos = corePos;
+        BlockPos targetPos = corePos;
         int sidesPass = 0;
-        boolean allPass = false;
 
-        sidesCheck:
+        boolean valueToCheck = false;
+
+        sidesHandle:
             for (EnumFacing facing : EnumFacing.VALUES) {
                 if (side != facing && side != facing.getOpposite()) {
                     sides.add(facing);
@@ -99,7 +112,12 @@ public class BlockWheelBase extends BlockContainer {
                     continue;
                 }
 
-                if (worldIn.getBlockState(pos.offset(facing)).getBlock().isReplaceable(worldIn, pos)) {
+                targetPos = corePos.offset(facing);
+                valueToCheck = type == funcType.ASSEMBLE ? worldIn.getBlockState(targetPos).getBlock().isReplaceable(worldIn, targetPos)
+                        : worldIn.getBlockState(targetPos).getBlock().equals(BlockInit.WHEEL_FILLER);
+
+                if (valueToCheck) {
+                    this.proceed(type, targetPos, corePos, worldIn);
                     sidesPass++;
                 } else {
                     break;
@@ -107,81 +125,69 @@ public class BlockWheelBase extends BlockContainer {
 
                 if (sidesPass == 4) {
 
-                    for (int x = 0; x < sides.size(); x++) {
-                        for (int y = sides.size() - 1; y > 0; y--) {
-                            anchorPos = pos.offset(sides.get(x));
-                            if (worldIn.getBlockState(anchorPos.offset(sides.get(y))).getBlock().isReplaceable(worldIn, anchorPos)) {
-                                sidesPass++;
+                    for (int x = 0; x <= 1; x++) {
+                        for (int y = 2; y <= 3; y++) {
+                            anchorPos = corePos.offset(sides.get(x));
+                            targetPos = anchorPos.offset(sides.get(y));
+
+                            valueToCheck = type == funcType.ASSEMBLE ? worldIn.getBlockState(targetPos).getBlock().isReplaceable(worldIn, targetPos)
+                                    : worldIn.getBlockState(targetPos).getBlock().equals(BlockInit.WHEEL_FILLER);
+
+                            if (valueToCheck) {
+
+                                this.proceed(type, targetPos, corePos, worldIn);
+
+                                if (sidesPass == 7)
+                                    return true;
+                                else {
+                                    sidesPass++;
+                                }
+
                             } else {
-                                break sidesCheck;
+                                break sidesHandle;
                             }
                         }
                     }
-
-                    if (sidesPass == 8) {
-                        allPass = true;
-                    }
                 }
             }
 
-        //Old version
+        return false;
+    }
 
+    public void proceed(funcType type, BlockPos targetPos, @Nullable BlockPos corePos, World worldIn) {
+        switch (type) {
+            case ASSEMBLE:
+                worldIn.setBlockState(targetPos, BlockInit.WHEEL_FILLER.getDefaultState());
 
-        for (EnumFacing facing : EnumFacing.VALUES) {
-            if (facing == side || facing.getOpposite() == side) {
-                continue;
-            } else {
-                sides.add(side);
-            }
+                NBTTagCompound compound = new NBTTagCompound();
+                compound.setLong(TileEntityWheelFiller.corePosKey, corePos.toLong());
 
-            if (worldIn.getBlockState(pos.offset(side)).getBlock().isReplaceable(worldIn, pos)) {
-                checkSides = true;
-            } else {
-                checkSides = false;
+                ((TileEntityWheelFiller)worldIn.getTileEntity(targetPos)).setCorePos(corePos);
+
                 break;
-            }
+            case DISASSEMBLE:
+                worldIn.destroyBlock(targetPos, false);
+                break;
+            case CHECK:
+                break;
         }
+    }
 
-        outer:
-            for (EnumFacing anchor : sides) {
-                for (EnumFacing direction : corners) {
-                    anchorPos = pos.offset(anchor);
-                    if (worldIn.getBlockState(anchorPos.offset(direction)).getBlock().isReplaceable(worldIn, anchorPos)) {
-                        checkCorners = true;
-                    } else {
-                        checkCorners = false;
-                        break outer;
-                    }
-                }
-            }
-
-        if (checkSides) {
-            corners.add(sides.get(0));
-            corners.add(sides.get(1));
-            sides.remove(0);
-            sides.remove(1);
-
-            outer:
-                for (EnumFacing anchor : sides) {
-                    for (EnumFacing direction : corners) {
-                        anchorPos = pos.offset(anchor);
-                        if (worldIn.getBlockState(anchorPos.offset(direction)).getBlock().isReplaceable(worldIn, anchorPos)) {
-                            checkCorners = true;
-                        } else {
-                            checkCorners = false;
-                            break outer;
-                        }
-                    }
-                }
-        }
-
-        return checkSides && checkCorners;
+    @Override
+    public void onPlayerDestroy(World worldIn, BlockPos pos, IBlockState state)
+    {
+        this.handleStructure(worldIn, pos, state.getValue(FACING), funcType.DISASSEMBLE);
     }
 
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
     {
 
+    }
+
+    @Override
+    public EnumBlockRenderType getRenderType(IBlockState state) {
+        return EnumBlockRenderType.MODEL;
     }
 
 
