@@ -85,27 +85,34 @@ public class BlockWheelBase extends BlockContainer {
     @Override
     public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side)
     {
-        return this.handleStructure(worldIn, pos, side, funcType.ASSEMBLE);
+        if (this.handleStructure(worldIn, pos, side, null, checkType.PREPARE))
+            return this.handleStructure(worldIn, pos, side, funcType.ASSEMBLE, null);
+        else
+            return false;
     }
 
     public enum funcType {
         ASSEMBLE,
-        DISASSEMBLE,
-        CHECK
+        DISASSEMBLE
     }
 
-    public boolean handleStructure(World worldIn, BlockPos corePos, EnumFacing side, funcType type) {
+    public enum checkType {
+        PREPARE,
+        MAKE_SURE
+    }
+
+
+    public boolean handleStructure(World worldIn, BlockPos corePos, EnumFacing side, @Nullable funcType funcType, @Nullable checkType checkType) {
 
         ArrayList<EnumFacing> sides = new ArrayList<EnumFacing>();
 
         BlockPos anchorPos = corePos;
-        BlockPos targetPos = corePos;
+        BlockPos targetPos = null;
         int sidesPass = 0;
 
-        boolean valueToCheck = false;
-
-        sidesHandle:
+        handleSides:
             for (EnumFacing facing : EnumFacing.VALUES) {
+
                 if (side != facing && side != facing.getOpposite()) {
                     sides.add(facing);
                 } else {
@@ -113,70 +120,98 @@ public class BlockWheelBase extends BlockContainer {
                 }
 
                 targetPos = corePos.offset(facing);
-                valueToCheck = type == funcType.ASSEMBLE ? worldIn.getBlockState(targetPos).getBlock().isReplaceable(worldIn, targetPos)
-                        : worldIn.getBlockState(targetPos).getBlock().equals(BlockInit.WHEEL_FILLER);
 
-                if (valueToCheck) {
-                    this.proceed(type, targetPos, corePos, worldIn);
-                    sidesPass++;
+                if (sidesPass < 4) {
+                    System.out.println("handling side " + side);
+                    if (checkType != null || funcType != null) {
+                        if (checkType != null && this.proceedWithCheck(checkType, targetPos, corePos, worldIn)) {
+                            System.out.println("checking side " + side);
+                            sidesPass++;
+                        }
+
+                        if (funcType != null && this.proceedWithFunc(funcType, targetPos, corePos, worldIn)) {
+                            System.out.println("placing at side " + side);
+                            sidesPass++;
+                        }
+                    }
                 } else {
-                    break;
-                }
 
-                if (sidesPass == 4) {
-
-                    for (int x = 0; x <= 1; x++) {
-                        for (int y = 2; y <= 3; y++) {
+                    for (int x = 0; x < 2; x++) {
+                        for (int y = 2; y < 4; y++) {
                             anchorPos = corePos.offset(sides.get(x));
                             targetPos = anchorPos.offset(sides.get(y));
 
-                            valueToCheck = type == funcType.ASSEMBLE ? worldIn.getBlockState(targetPos).getBlock().isReplaceable(worldIn, targetPos)
-                                    : worldIn.getBlockState(targetPos).getBlock().equals(BlockInit.WHEEL_FILLER);
+                            System.out.println("handling corner " + targetPos);
 
-                            if (valueToCheck) {
-
-                                this.proceed(type, targetPos, corePos, worldIn);
-
-                                if (sidesPass == 7)
-                                    return true;
-                                else {
+                            if (checkType != null || funcType != null) {
+                                if (checkType != null && this.proceedWithCheck(checkType, targetPos, corePos, worldIn)) {
+                                    System.out.println("checking corner " + targetPos);
                                     sidesPass++;
+                                    continue;
                                 }
 
+                                if (funcType != null && this.proceedWithFunc(funcType, targetPos, corePos, worldIn)) {
+                                    System.out.println("checking corner " + targetPos);
+                                    sidesPass++;
+                                    continue;
+                                }
                             } else {
-                                break sidesHandle;
+                                break handleSides;
                             }
+
+                            if (sidesPass == 8)
+                                //7 or 8
+                                return true;
                         }
                     }
                 }
             }
 
         return false;
+
     }
 
-    public void proceed(funcType type, BlockPos targetPos, @Nullable BlockPos corePos, World worldIn) {
+    public boolean proceedWithCheck(checkType type, BlockPos targetPos, @Nullable BlockPos corePos, World worldIn) {
         switch (type) {
-            case ASSEMBLE:
+            case PREPARE: {
+                if (worldIn.getBlockState(targetPos).getBlock().isReplaceable(worldIn, targetPos))
+                    return true;
+                break;
+            }
+            case MAKE_SURE: {
+                if (worldIn.getBlockState(targetPos).getBlock().equals(BlockInit.WHEEL_FILLER))
+                    return true;
+                break;
+            }
+        }
+        return false;
+    }
+
+    public boolean proceedWithFunc(funcType type, BlockPos targetPos, @Nullable BlockPos corePos, World worldIn) {
+        switch (type) {
+            case ASSEMBLE: {
                 worldIn.setBlockState(targetPos, BlockInit.WHEEL_FILLER.getDefaultState());
 
-                NBTTagCompound compound = new NBTTagCompound();
-                compound.setLong(TileEntityWheelFiller.corePosKey, corePos.toLong());
+                TileEntity tile = worldIn.getTileEntity(targetPos);
+                if (tile != null) {
+                    ((TileEntityWheelFiller)tile).setCorePos(corePos);
+                }
+                //idk if this is actually needed
 
-                ((TileEntityWheelFiller)worldIn.getTileEntity(targetPos)).setCorePos(corePos);
-
-                break;
-            case DISASSEMBLE:
+                return true;
+            }
+            case DISASSEMBLE: {
                 worldIn.destroyBlock(targetPos, false);
-                break;
-            case CHECK:
-                break;
+                return true;
+            }
         }
+        return false;
     }
 
     @Override
     public void onPlayerDestroy(World worldIn, BlockPos pos, IBlockState state)
     {
-        this.handleStructure(worldIn, pos, state.getValue(FACING), funcType.DISASSEMBLE);
+        this.handleStructure(worldIn, pos, state.getValue(FACING), funcType.DISASSEMBLE, null);
     }
 
     @Override
