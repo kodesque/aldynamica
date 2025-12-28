@@ -1,4 +1,4 @@
-package essentialcraft.api;
+package essentialcraft.capabilities;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;

@@ -61,7 +61,7 @@ public class PotionFalseSaturation extends Potion{
                 //if there is a difference between current and old food level, increase damage
 
                 if (remainingTime <= 1) {
-                    entityLivingBaseIn.attackEntityFrom(DamageSource.GENERIC, damageToDeal);
+                    entityLivingBaseIn.attackEntityFrom(DamageSource.causeIndirectDamage(playerIn, entityLivingBaseIn), damageToDeal);
 
                     if (finalFoodLevel < 0) {
                         finalFoodLevel = 0;

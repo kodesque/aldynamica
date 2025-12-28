@@ -198,75 +198,75 @@ public class BlockBrutefire extends BlockFire {
     }
 
 
-    public static void init() {
-
-        //vanilla start
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.PLANKS, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DOUBLE_WOODEN_SLAB, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.WOODEN_SLAB, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.OAK_FENCE_GATE, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.SPRUCE_FENCE_GATE, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.BIRCH_FENCE_GATE, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.JUNGLE_FENCE_GATE, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DARK_OAK_FENCE_GATE, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.ACACIA_FENCE_GATE, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.OAK_FENCE, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.SPRUCE_FENCE, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.BIRCH_FENCE, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.JUNGLE_FENCE, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DARK_OAK_FENCE, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.ACACIA_FENCE, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.OAK_STAIRS, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.BIRCH_STAIRS, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.SPRUCE_STAIRS, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.JUNGLE_STAIRS, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.ACACIA_STAIRS, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DARK_OAK_STAIRS, 10, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.LOG, 10, 10);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.LOG2, 10, 10);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.LEAVES, 60, 80);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.LEAVES2, 60, 80);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.BOOKSHELF, 40, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.TNT, 15, 100);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.TALLGRASS, 80, 100);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DOUBLE_PLANT, 80, 100);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.YELLOW_FLOWER, 80, 100);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.RED_FLOWER, 80, 100);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DEADBUSH, 80, 100);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.WOOL, 60, 60);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.VINE, 30, 100);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.COAL_BLOCK, 20, 20);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.HAY_BLOCK, 60, 60);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.CARPET, 60, 60);
-        //vanilla end
-
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STONE, 5, 20);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.COBBLESTONE, 5, 20);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.MOSSY_COBBLESTONE, 5, 5);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STONEBRICK, 5, 5);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.BRICK_BLOCK, 5, 30);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.BRICK_STAIRS, 5, 30);
-
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STONE_SLAB, 5, 20);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DOUBLE_STONE_SLAB, 5, 20);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STONE_SLAB2, 5, 20);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DOUBLE_STONE_SLAB2, 5, 20);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STONE_STAIRS, 5, 20);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STONE_BRICK_STAIRS, 5, 20);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.COBBLESTONE_WALL, 5, 20);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STONE_BRICK_STAIRS, 5, 5);
-
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.MONSTER_EGG, 5, 60);
-
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.FURNACE, 5, 10);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DROPPER, 5, 10);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DISPENSER, 5, 10);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STONE_BUTTON, 5, 20);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STONE_PRESSURE_PLATE, 5, 20);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.PISTON, 5, 40);
-        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STICKY_PISTON, 5, 40);
-
-    }
+    //    public static void init() {
+    //
+    //        //vanilla start
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.PLANKS, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DOUBLE_WOODEN_SLAB, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.WOODEN_SLAB, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.OAK_FENCE_GATE, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.SPRUCE_FENCE_GATE, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.BIRCH_FENCE_GATE, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.JUNGLE_FENCE_GATE, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DARK_OAK_FENCE_GATE, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.ACACIA_FENCE_GATE, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.OAK_FENCE, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.SPRUCE_FENCE, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.BIRCH_FENCE, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.JUNGLE_FENCE, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DARK_OAK_FENCE, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.ACACIA_FENCE, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.OAK_STAIRS, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.BIRCH_STAIRS, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.SPRUCE_STAIRS, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.JUNGLE_STAIRS, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.ACACIA_STAIRS, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DARK_OAK_STAIRS, 10, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.LOG, 10, 10);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.LOG2, 10, 10);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.LEAVES, 60, 80);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.LEAVES2, 60, 80);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.BOOKSHELF, 40, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.TNT, 15, 100);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.TALLGRASS, 80, 100);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DOUBLE_PLANT, 80, 100);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.YELLOW_FLOWER, 80, 100);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.RED_FLOWER, 80, 100);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DEADBUSH, 80, 100);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.WOOL, 60, 60);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.VINE, 30, 100);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.COAL_BLOCK, 20, 20);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.HAY_BLOCK, 60, 60);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.CARPET, 60, 60);
+    //        //vanilla end
+    //
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STONE, 5, 20);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.COBBLESTONE, 5, 20);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.MOSSY_COBBLESTONE, 5, 5);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STONEBRICK, 5, 5);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.BRICK_BLOCK, 5, 30);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.BRICK_STAIRS, 5, 30);
+    //
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STONE_SLAB, 5, 20);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DOUBLE_STONE_SLAB, 5, 20);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STONE_SLAB2, 5, 20);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DOUBLE_STONE_SLAB2, 5, 20);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STONE_STAIRS, 5, 20);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STONE_BRICK_STAIRS, 5, 20);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.COBBLESTONE_WALL, 5, 20);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STONE_BRICK_STAIRS, 5, 5);
+    //
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.MONSTER_EGG, 5, 60);
+    //
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.FURNACE, 5, 10);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DROPPER, 5, 10);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.DISPENSER, 5, 10);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STONE_BUTTON, 5, 20);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STONE_PRESSURE_PLATE, 5, 20);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.PISTON, 5, 40);
+    //        BlockInit.BRUTEFIRE_PRE.setFireInfo(Blocks.STICKY_PISTON, 5, 40);
+    //
+    //    }
 
 
 }

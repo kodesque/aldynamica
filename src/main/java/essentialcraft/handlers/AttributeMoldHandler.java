@@ -1,9 +1,11 @@
 package essentialcraft.handlers;
 
+import java.util.Map;
+
 import org.lwjgl.input.Mouse;
 
-import essentialcraft.api.CapabilityAttributeImprint;
 import essentialcraft.api.Main;
+import essentialcraft.capabilities.CapabilityAttributeImprint;
 import essentialcraft.common.items.ItemAttributeMold;
 import essentialcraft.network.packets.Network;
 import essentialcraft.network.packets.PacketBindMold;
@@ -11,18 +13,21 @@ import essentialcraft.util.IAttributeImprint;
 import essentialcraft.util.ILeavesImprint;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.client.event.GuiScreenEvent.MouseInputEvent;
+import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber
-public class AttributeHandler {
+public class AttributeMoldHandler {
 
     @SubscribeEvent
     public static void leaveImprint(AttackEntityEvent event) {
@@ -96,22 +101,43 @@ public class AttributeHandler {
 
                 if (stackCarried.getItem() instanceof ItemAttributeMold) {
 
-                    if (stackLying.getCapability(CapabilityAttributeImprint.CAP, null).getAmount() == 0) {
+                    if (stackLying.hasCapability(CapabilityAttributeImprint.CAP, null)) {
+                        if (stackLying.getCapability(CapabilityAttributeImprint.CAP, null).getAmount() == 0) {
 
-                        Double key = Minecraft.getMinecraft().player.world.rand.nextGaussian();
+                            Double key = Minecraft.getMinecraft().player.world.rand.nextGaussian();
 
-                        NBTTagCompound tagCarried = stackCarried.getOrCreateSubCompound(Main.MODID);
-                        tagCarried.setDouble(ItemAttributeMold.key, key);
-                        tagCarried.setString(ItemAttributeMold.bound_item, stackLying.getDisplayName());
+                            NBTTagCompound tagCarried = stackCarried.getOrCreateSubCompound(Main.MODID);
+                            tagCarried.setDouble(ItemAttributeMold.key, key);
+                            tagCarried.setString(ItemAttributeMold.bound_item, stackLying.getDisplayName());
 
-                        stackCarried.getCapability(CapabilityAttributeImprint.CAP, null).setStoringTypeAndRequiredAmount(
-                                false, ((ILeavesImprint)stackLying.getItem()).getRequiredImprint());
+                            stackCarried.getCapability(CapabilityAttributeImprint.CAP, null).setStoringTypeAndRequiredAmount(
+                                    false, ((ILeavesImprint)stackLying.getItem()).getRequiredImprint());
 
-                        Network.sendToPlayerSP(new PacketBindMold(slot.getSlotIndex(), key));
+                            Network.sendToPlayerSP(new PacketBindMold(slot.getSlotIndex(), key));
 
-                        event.setCanceled(true);
+                            event.setCanceled(true);
+                        }
                     }
                 }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onAnvilUpdate(AnvilUpdateEvent event) {
+        ItemStack left = event.getLeft();
+        ItemStack right = event.getRight();
+
+        if (!right.isEmpty() && right.getItem() instanceof ItemAttributeMold) {
+            if (right.isItemEnchanted()) {
+                ItemStack output = left.copy();
+
+                Map<Enchantment, Integer> enchants = EnchantmentHelper.getEnchantments(right);
+
+                enchants.forEach((ench, lvl) -> output.addEnchantment(ench, lvl));
+
+                event.setOutput(output);
+                event.setCost(10);
             }
         }
     }

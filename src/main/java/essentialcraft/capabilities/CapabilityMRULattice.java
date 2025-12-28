@@ -1,5 +1,6 @@
-package essentialcraft.api;
+package essentialcraft.capabilities;
 
+import essentialcraft.api.Main;
 import essentialcraft.util.IMRULattice;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;

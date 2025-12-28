@@ -1,38 +1,27 @@
 package essentialcraft.api;
 
+import essentialcraft.capabilities.CapabilityMRULattice;
+import essentialcraft.capabilities.CapabilityMRUStorage;
+import essentialcraft.common.tiles.TileEntityWheelBase;
+import essentialcraft.common.tiles.TileEntityWheelFiller;
+import essentialcraft.init.ItemInit;
+import essentialcraft.network.packets.Network;
+import essentialcraft.network.proxy.CommonProxy;
+import essentialcraft.renderer.RendererWheelBase;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.client.model.obj.OBJLoader;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.io.File;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import essentialcraft.common.tiles.TileEntityWheelBase;
-import essentialcraft.common.tiles.TileEntityWheelFiller;
-import essentialcraft.handlers.ExampleConfig;
-import essentialcraft.handlers.GenericEventHandler;
-import essentialcraft.init.ItemInit;
-import essentialcraft.network.packets.Network;
-import essentialcraft.network.proxy.CommonProxy;
 
 @Mod(modid = Main.MODID, version = Main.VERSION, name = Main.NAME)
 public class Main {
@@ -51,6 +40,7 @@ public class Main {
         CapabilityMRUStorage.register();
         CapabilityMRULattice.register();
         Network.registerPackets();
+        proxy.preInit(event);
 
 
         GameRegistry.registerTileEntity(TileEntityWheelBase.class, new ResourceLocation(MODID, "wheel"));

@@ -1,7 +1,7 @@
 package essentialcraft.network.packets;
 
-import essentialcraft.api.CapabilityMRULattice;
-import essentialcraft.api.CapabilityMRUStorage;
+import essentialcraft.capabilities.CapabilityMRULattice;
+import essentialcraft.capabilities.CapabilityMRUStorage;
 import essentialcraft.util.IMRULattice;
 import essentialcraft.util.IMRUStorage;
 import io.netty.buffer.ByteBuf;

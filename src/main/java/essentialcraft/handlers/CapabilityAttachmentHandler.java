@@ -1,11 +1,11 @@
 package essentialcraft.handlers;
 
-import essentialcraft.api.AttributeImprintProvider;
-import essentialcraft.api.CapabilityAttributeImprint;
-import essentialcraft.api.CapabilityMRULattice;
-import essentialcraft.api.CapabilityMRUStorage;
-import essentialcraft.api.MRULatticeProvider;
-import essentialcraft.api.MRUStorageProvider;
+import essentialcraft.capabilities.AttributeImprintProvider;
+import essentialcraft.capabilities.CapabilityAttributeImprint;
+import essentialcraft.capabilities.CapabilityMRULattice;
+import essentialcraft.capabilities.CapabilityMRUStorage;
+import essentialcraft.capabilities.MRULatticeProvider;
+import essentialcraft.capabilities.MRUStorageProvider;
 import essentialcraft.common.items.ItemAttributeMold;
 import essentialcraft.util.ILeavesImprint;
 import net.minecraft.entity.Entity;
@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber
-public class CapabilityHandler {
+public class CapabilityAttachmentHandler {
 
     @SubscribeEvent
     public static void attachCapabilityEntity(AttachCapabilitiesEvent<Entity> event) {

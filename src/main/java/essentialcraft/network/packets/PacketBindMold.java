@@ -1,8 +1,8 @@
 package essentialcraft.network.packets;
 
-import essentialcraft.api.CapabilityAttributeImprint;
-import essentialcraft.api.CapabilityMRULattice;
 import essentialcraft.api.Main;
+import essentialcraft.capabilities.CapabilityAttributeImprint;
+import essentialcraft.capabilities.CapabilityMRULattice;
 import essentialcraft.common.items.ItemAttributeMold;
 import essentialcraft.util.ILeavesImprint;
 import essentialcraft.util.IMRULattice;

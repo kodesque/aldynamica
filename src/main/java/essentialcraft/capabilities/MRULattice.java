@@ -1,15 +1,15 @@
-package essentialcraft.api;
+package essentialcraft.capabilities;
 
-import essentialcraft.util.IMRUStorage;
+import essentialcraft.util.IMRULattice;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class MRUStorage implements IMRUStorage{
+public class MRULattice implements IMRULattice{
 
-    private int amount = 0;
-    public static final String name = "MRU_storage";
+    private int amount = 100;
+    public static final String name = "MRU_lattice";
 
     public void throwException() {
-        throw new IllegalArgumentException("Received an illegal value while working with storage!");
+        throw new IllegalArgumentException("Received an illegal value while working with lattice!");
     }
 
     @Override
@@ -28,7 +28,7 @@ public class MRUStorage implements IMRUStorage{
 
     @Override
     public void addAmount(int amount) {
-        if (amount < 0) {
+        if (amount < 0 || this.amount+amount > 100) {
             this.throwException();
         } else {
             this.amount += amount;
@@ -54,5 +54,6 @@ public class MRUStorage implements IMRUStorage{
         this.amount = nbt.getInteger(name);
         return nbt;
     }
-
 }
+
+

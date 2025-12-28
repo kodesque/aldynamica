@@ -30,7 +30,7 @@ public class BlockInit {
     public static final Block WHEEL_FILLER = new BlockWheelFiller("wheel_filler")
             .setHardness(5);
 
-    public static BlockBrutefire BRUTEFIRE_PRE = new BlockBrutefire("brutefire");
-
-    public static final Block BRUTEFIRE = BRUTEFIRE_PRE;
+    //    public static BlockBrutefire BRUTEFIRE_PRE = new BlockBrutefire("brutefire");
+    //
+    //    public static final Block BRUTEFIRE = BRUTEFIRE_PRE;
 }

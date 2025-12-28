@@ -1,6 +1,6 @@
 package essentialcraft.handlers;
 
-import essentialcraft.api.CapabilityMRUStorage;
+import essentialcraft.capabilities.CapabilityMRUStorage;
 import essentialcraft.network.packets.Network;
 import essentialcraft.network.packets.PacketUpdateStorage;
 import essentialcraft.util.IMRUStorage;

@@ -1,4 +1,4 @@
-package essentialcraft.api;
+package essentialcraft.capabilities;
 
 import essentialcraft.util.IAttributeImprint;
 import essentialcraft.util.IMRUStorage;

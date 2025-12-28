@@ -1,6 +1,7 @@
-package essentialcraft.api;
+package essentialcraft.capabilities;
 
 
+import essentialcraft.api.Main;
 import essentialcraft.util.IAttributeImprint;
 import essentialcraft.util.IMRUStorage;
 import net.minecraft.nbt.NBTBase;

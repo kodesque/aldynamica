@@ -10,12 +10,12 @@ import javax.annotation.Nullable;
 
 import com.google.common.base.Supplier;
 
-import essentialcraft.api.CapabilityMRULattice;
-import essentialcraft.api.CapabilityMRUStorage;
-import essentialcraft.api.MRULattice;
-import essentialcraft.api.MRUStorage;
-import essentialcraft.api.MRUStorageProvider;
 import essentialcraft.api.Main;
+import essentialcraft.capabilities.CapabilityMRULattice;
+import essentialcraft.capabilities.CapabilityMRUStorage;
+import essentialcraft.capabilities.MRULattice;
+import essentialcraft.capabilities.MRUStorage;
+import essentialcraft.capabilities.MRUStorageProvider;
 import essentialcraft.common.basic.ItemBase;
 import essentialcraft.handlers.GenericEventHandler;
 import essentialcraft.init.ItemInit;

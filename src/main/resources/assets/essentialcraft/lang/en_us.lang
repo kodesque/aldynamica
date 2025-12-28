@@ -10,8 +10,6 @@ item.essentialcraft.dull_pill.name=Dull Pill
 item.essentialcraft.digestable_polymer.name=Digestable Polymer
 item.essentialcraft.polymer_clay.name=Polymer Clay
 
-item.essentialcraft.apple.name=Apple
-
 #CREATIVE TAB
 itemGroup.tabEssentialCraft=Essential Craft
 
@@ -24,5 +22,10 @@ tooltip.essentialcraft.conductor_dummy.coherence=Lattice coherence:
 tooltip.essentialcraft.attribute_mold.bound_item=Bound with:
 tooltip.essentialcraft.attribute_mold.imprint=Imprint:
 tooltip.essentialcraft.attribute_mold.inactive=§7Bind with §5[RMB] §7in inventory
+
+tooltip.essentialcraft.spare_durability=Spare Durability:
+tooltip.essentialcraft.lightness=Material Lightness:
+tooltip.essentialcraft.durability=Material Durability:
+tooltip.essentialcraft.hardness=Material Hardness:
 
 tooltip.essentialcraft.soldering_crowbar.description=§7§oRepairs anvils, attunes machines and crushes bones
