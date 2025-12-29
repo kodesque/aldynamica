@@ -1,9 +1,9 @@
 package essentialcraft.network.packets;
 
-import essentialcraft.capabilities.CapabilityMRULattice;
-import essentialcraft.capabilities.CapabilityMRUStorage;
-import essentialcraft.util.IMRULattice;
-import essentialcraft.util.IMRUStorage;
+import essentialcraft.api.IMRULattice;
+import essentialcraft.api.IMRUStorage;
+import essentialcraft.capabilities.register.CapabilityMRULattice;
+import essentialcraft.capabilities.register.CapabilityMRUStorage;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.client.FMLClientHandler;

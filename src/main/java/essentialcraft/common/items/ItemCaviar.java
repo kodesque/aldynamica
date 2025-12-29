@@ -2,7 +2,7 @@ package essentialcraft.common.items;
 
 import java.util.Random;
 
-import essentialcraft.common.basic.ItemBase;
+import essentialcraft.common.templates.ItemBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntitySilverfish;

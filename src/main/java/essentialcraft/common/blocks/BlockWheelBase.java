@@ -1,9 +1,9 @@
 package essentialcraft.common.blocks;
 
-import essentialcraft.api.Main;
+import essentialcraft.api.IHasModel;
 import essentialcraft.common.tiles.TileEntityWheelBase;
 import essentialcraft.init.BlockInit;
-import essentialcraft.util.IHasModel;
+import essentialcraft.root.Main;
 import essentialcraft.util.StructureUtil;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;

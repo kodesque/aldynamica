@@ -1,11 +1,11 @@
 package essentialcraft.network.packets;
 
-import essentialcraft.api.Main;
-import essentialcraft.capabilities.CapabilityAttributeImprint;
-import essentialcraft.capabilities.CapabilityMRULattice;
+import essentialcraft.api.ILeavesImprint;
+import essentialcraft.api.IMRULattice;
+import essentialcraft.capabilities.register.CapabilityAttributeImprint;
+import essentialcraft.capabilities.register.CapabilityMRULattice;
 import essentialcraft.common.items.ItemAttributeMold;
-import essentialcraft.util.ILeavesImprint;
-import essentialcraft.util.IMRULattice;
+import essentialcraft.root.Main;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;

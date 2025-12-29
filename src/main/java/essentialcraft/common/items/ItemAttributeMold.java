@@ -4,11 +4,11 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import essentialcraft.api.Main;
-import essentialcraft.capabilities.CapabilityAttributeImprint;
-import essentialcraft.capabilities.CapabilityMRULattice;
-import essentialcraft.capabilities.CapabilityMRUStorage;
-import essentialcraft.common.basic.ItemBase;
+import essentialcraft.capabilities.register.CapabilityAttributeImprint;
+import essentialcraft.capabilities.register.CapabilityMRULattice;
+import essentialcraft.capabilities.register.CapabilityMRUStorage;
+import essentialcraft.common.templates.ItemBase;
+import essentialcraft.root.Main;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;

@@ -3,8 +3,8 @@ package essentialcraft.init;
 import java.util.ArrayList;
 import java.util.List;
 
-import essentialcraft.potions.PotionFalseSaturation;
-import essentialcraft.potions.PotionMindtrick;
+import essentialcraft.common.potions.PotionFalseSaturation;
+import essentialcraft.common.potions.PotionMindtrick;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.registry.GameRegistry;

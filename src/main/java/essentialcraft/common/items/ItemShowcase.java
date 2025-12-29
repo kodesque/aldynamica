@@ -1,9 +1,9 @@
 package essentialcraft.common.items;
 
-import essentialcraft.api.Main;
-import essentialcraft.common.basic.ItemBase;
-import essentialcraft.util.IHasModel;
-import essentialcraft.util.ILeavesImprint;
+import essentialcraft.api.IHasModel;
+import essentialcraft.api.ILeavesImprint;
+import essentialcraft.common.templates.ItemBase;
+import essentialcraft.root.Main;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 

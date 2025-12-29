@@ -1,7 +1,7 @@
 package essentialcraft.network.packets;
 
-import essentialcraft.capabilities.CapabilityMRULattice;
-import essentialcraft.util.IMRULattice;
+import essentialcraft.api.IMRULattice;
+import essentialcraft.capabilities.register.CapabilityMRULattice;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextComponentString;

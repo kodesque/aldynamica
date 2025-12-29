@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import essentialcraft.api.Main;
+import essentialcraft.api.IAttributeImprint;
+import essentialcraft.api.IHasModel;
+import essentialcraft.api.ILeavesImprint;
+import essentialcraft.api.IMRUStorage;
 import essentialcraft.init.ItemInit;
-import essentialcraft.util.IAttributeImprint;
-import essentialcraft.util.IHasModel;
-import essentialcraft.util.ILeavesImprint;
-import essentialcraft.util.IMRUStorage;
+import essentialcraft.root.Main;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.block.Block;

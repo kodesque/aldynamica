@@ -3,15 +3,15 @@ package essentialcraft.init;
 import java.util.ArrayList;
 import java.util.List;
 
-import essentialcraft.api.Main;
-import essentialcraft.common.basic.ItemBase;
-import essentialcraft.common.basic.ItemBlockBase;
 import essentialcraft.common.items.ItemAttributeMold;
 import essentialcraft.common.items.ItemCaviar;
 import essentialcraft.common.items.ItemConductor;
 import essentialcraft.common.items.ItemCrowbar;
 import essentialcraft.common.items.ItemPill;
 import essentialcraft.common.items.ItemShowcase;
+import essentialcraft.common.templates.ItemBase;
+import essentialcraft.common.templates.ItemBlockBase;
+import essentialcraft.root.Main;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;

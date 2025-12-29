@@ -3,8 +3,8 @@ package essentialcraft.common.blocks;
 import java.util.ArrayList;
 import java.util.Random;
 
-import essentialcraft.api.Main;
 import essentialcraft.init.BlockInit;
+import essentialcraft.root.Main;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFire;
 import net.minecraft.block.BlockTNT;

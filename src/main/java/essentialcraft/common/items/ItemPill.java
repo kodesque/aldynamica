@@ -3,8 +3,8 @@ package essentialcraft.common.items;
 import javax.annotation.Nullable;
 import javax.swing.text.html.parser.Entity;
 
-import essentialcraft.api.Main;
-import essentialcraft.common.basic.ItemBase;
+import essentialcraft.common.templates.ItemBase;
+import essentialcraft.root.Main;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;

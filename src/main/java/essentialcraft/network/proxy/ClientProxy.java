@@ -4,9 +4,9 @@ package essentialcraft.network.proxy;
 import java.util.HashMap;
 import java.util.UUID;
 
-import essentialcraft.api.Main;
+import essentialcraft.client.renderer.tiles.RendererWheelBase;
 import essentialcraft.common.tiles.TileEntityWheelBase;
-import essentialcraft.renderer.RendererWheelBase;
+import essentialcraft.root.Main;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;

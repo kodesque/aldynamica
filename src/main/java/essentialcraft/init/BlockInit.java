@@ -3,10 +3,10 @@ package essentialcraft.init;
 import java.util.ArrayList;
 import java.util.List;
 
-import essentialcraft.common.basic.BlockBase;
 import essentialcraft.common.blocks.BlockBrutefire;
 import essentialcraft.common.blocks.BlockWheelBase;
 import essentialcraft.common.blocks.BlockWheelFiller;
+import essentialcraft.common.templates.BlockBase;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockPane;
