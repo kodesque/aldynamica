@@ -2,23 +2,16 @@ package essentialcraft.events.front;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.UUID;
 
-import essentialcraft.root.Main;
 import essentialcraft.util.PropertyUtil;
 import essentialcraft.util.PropertyUtil.PropertyBundle;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
-import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -26,7 +19,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
-import net.minecraftforge.oredict.OreDictionary;
 
 @Mod.EventBusSubscriber
 public class PropertyEvents {
@@ -53,16 +45,19 @@ public class PropertyEvents {
     public static void useSpareDurability(PlayerDestroyItemEvent event) {
 
         ItemStack original = event.getOriginal();
+        ItemStack safe = original.copy();
         EntityPlayer player = event.getEntityPlayer();
-        NBTTagCompound nbt = original.getSubCompound(PropertyUtil.PROPID);
+        NBTTagCompound nbt = safe.getSubCompound(PropertyUtil.PROPID);
+
+        if (original.getItem() instanceof ItemArmor) return;
 
         if ((nbt == null) || (nbt.getInteger(PropertyUtil.durability_key) <= 0)) return;
 
-        original.setItemDamage(original.getItemDamage() - 1);
-        nbt.setInteger(PropertyUtil.durability_key, Math.max((nbt.getInteger(PropertyUtil.durability_key) - 1), 0));
+        safe.setItemDamage(original.getItemDamage() - nbt.getInteger(PropertyUtil.durability_key));
+        nbt.setInteger(PropertyUtil.durability_key, Math.max((nbt.getInteger(PropertyUtil.durability_key) - original.getItemDamage()), 0));
 
-        if (!player.addItemStackToInventory(original.copy())) {
-            player.dropItem(original.copy(), false);
+        if (!player.addItemStackToInventory(safe)) {
+            player.dropItem(safe, false);
         }
     }
 
@@ -74,9 +69,9 @@ public class PropertyEvents {
         if (props.isEmpty()) return;
         if (PropertyUtil.isToolOrArmor(stack) != PropertyUtil.UseType.BREAK) return;
 
-        float toModify = event.getOriginalSpeed();
+        float toModify = event.getNewSpeed();
 
-        event.setNewSpeed((float)(toModify + (props.hardness * 2)));
+        event.setNewSpeed((float)(toModify + (props.hardness * 4)));
     }
 
     @SubscribeEvent
@@ -87,13 +82,17 @@ public class PropertyEvents {
 
         if (nbt == null) return;
 
+        double lightness = nbt.getDouble(PropertyBundle.lightness_key);
+        double stiffness = nbt.getDouble(PropertyBundle.stiffness_key);
+        double hardness = nbt.getDouble(PropertyBundle.hardness_key);
+
         if (nbt.getInteger(PropertyUtil.durability_key) != 0) {
-            tips.add(PropertyUtil.spare_durability_lang.getFormattedText() + " " + nbt.getInteger(PropertyUtil.durability_key));
+            tips.add(PropertyUtil.spare_durability_lang.getFormattedText() + " " + TextFormatting.GREEN + nbt.getInteger(PropertyUtil.durability_key));
         }
 
-        tips.add(PropertyUtil.lightness_lang.getFormattedText() + " " + nbt.getDouble(PropertyBundle.lightness_key));
-        tips.add(PropertyUtil.stiffness_lang.getFormattedText() + " " + nbt.getDouble(PropertyBundle.stiffness_key));
-        tips.add(PropertyUtil.hardness_lang.getFormattedText() + " " + nbt.getDouble(PropertyBundle.hardness_key));
+        tips.add(PropertyUtil.lightness_lang.getFormattedText() + " " + TextFormatting.YELLOW + lightness);
+        tips.add(PropertyUtil.stiffness_lang.getFormattedText() + " " + TextFormatting.YELLOW + stiffness);
+        tips.add(PropertyUtil.hardness_lang.getFormattedText() + " " + TextFormatting.YELLOW + hardness);
     }
 
     //TODO: don't forget to remove on release
@@ -103,6 +102,7 @@ public class PropertyEvents {
         if (!event.getWorld().isRemote) {
             if (PropertyUtil.isIngotOrGem(item)) {
                 PropertyUtil.rollAndWriteProperties(item, event.getWorld().rand);
+                System.out.print(item.getSubCompound(PropertyUtil.PROPID));
             }
         }
     }

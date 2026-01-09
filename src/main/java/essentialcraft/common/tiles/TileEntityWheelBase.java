@@ -1,19 +1,21 @@
 package essentialcraft.common.tiles;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.AxisAlignedBB;
 
 public class TileEntityWheelBase extends TileEntity implements ITickable, ISidedInventory{
 
     private NonNullList<ItemStack> containerContents = NonNullList.<ItemStack>withSize(3, ItemStack.EMPTY);
+    private AxisAlignedBB cachedBB;
 
     public TileEntityWheelBase()
     {
@@ -33,6 +35,15 @@ public class TileEntityWheelBase extends TileEntity implements ITickable, ISided
         }
 
         return true;
+    }
+
+    public void updateBoundingBox() {
+        this.cachedBB = new AxisAlignedBB(this.pos.add(-2,0,0), this.pos.add(3,2,1));
+    }
+
+    @Override
+    public AxisAlignedBB getRenderBoundingBox() {
+        return this.cachedBB != null ? this.cachedBB : super.getRenderBoundingBox();
     }
 
     @Override

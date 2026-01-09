@@ -25,7 +25,7 @@ tooltip.essentialcraft.attribute_mold.inactive=§7Bind with §5[RMB] §7in inven
 
 tooltip.essentialcraft.properties.spare_durability=Spare Durability:
 tooltip.essentialcraft.properties.lightness=Lightness:
-tooltip.essentialcraft.properties.stiffness=Stiffness:
-tooltip.essentialcraft.properties.hardness=Hardness:
+tooltip.essentialcraft.properties.stiffness=Hardness:
+tooltip.essentialcraft.properties.hardness=Stiffness:
 
 tooltip.essentialcraft.soldering_crowbar.description=§7§oRepairs anvils, attunes machines and crushes bones

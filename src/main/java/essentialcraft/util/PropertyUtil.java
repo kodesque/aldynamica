@@ -3,6 +3,7 @@ package essentialcraft.util;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
@@ -18,6 +19,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class PropertyUtil {
@@ -72,23 +74,32 @@ public class PropertyUtil {
 
                 EntityEquipmentSlot applicable = ((ItemArmor)stack.getItem()).getEquipmentSlot();
 
-                UUID id_moveSpeed = UUID.fromString("d3c6e3a2-9c6f-4d8a-bc89-8bde0b1f0001");
-                AttributeModifier attrMoveSpeed = new AttributeModifier(id_moveSpeed, movement_speed_key, 0.01 * props.lightness, 0);
+                double baseArmor = findBaseAttribute(SharedMonsterAttributes.ARMOR.getName(), stack, applicable)
+                        .getAmount();
+
+                UUID id_moveSpeed = UUID.fromString("d3c6e3a2-9c6f-4d8a-bc89-8bde0b1f00" + applicable.getSlotIndex() + "1");
+                AttributeModifier attrMoveSpeed = new AttributeModifier(id_moveSpeed, movement_speed_key, 0.005 * props.lightness, 0);
                 stack.addAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED.getName(), attrMoveSpeed, applicable);
 
-                UUID id_protect = UUID.fromString("d3c6e3a2-9c6f-4d8a-bc89-8bde0b1f0002");
-                AttributeModifier attrProtection = new AttributeModifier(id_protect, protection_key, 0.5 * props.hardness, 0);
+                UUID id_protect = UUID.fromString("d3c6e3a2-9c6f-4d8a-bc89-8bde0b1f00" + applicable.getIndex() + "2");
+                AttributeModifier attrProtection = new AttributeModifier(id_protect, protection_key, baseArmor + (0.5 * props.hardness), 0);
                 stack.addAttributeModifier(SharedMonsterAttributes.ARMOR.getName(), attrProtection, applicable);
 
                 break;
             case ATTACK:
 
+                double baseSpeed = findBaseAttribute(SharedMonsterAttributes.ATTACK_SPEED.getName(), stack, EntityEquipmentSlot.MAINHAND)
+                .getAmount();
+
                 UUID id_attackSpeed = UUID.fromString("d3c6e3a2-9c6f-4d8a-bc89-8bde0b1f0003");
-                AttributeModifier attrAttackSpeed = new AttributeModifier(id_attackSpeed, attack_speed_key, 0.1 * props.lightness, 0);
+                AttributeModifier attrAttackSpeed = new AttributeModifier(id_attackSpeed, attack_speed_key, baseSpeed + (props.lightness), 0);
                 stack.addAttributeModifier(SharedMonsterAttributes.ATTACK_SPEED.getName(), attrAttackSpeed, EntityEquipmentSlot.MAINHAND);
 
+                double baseAttack = findBaseAttribute(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), stack, EntityEquipmentSlot.MAINHAND)
+                        .getAmount();
+
                 UUID id_attack = UUID.fromString("d3c6e3a2-9c6f-4d8a-bc89-8bde0b1f0004");
-                AttributeModifier attrAttack = new AttributeModifier(id_attack, damage_key, 5 * props.hardness, 0);
+                AttributeModifier attrAttack = new AttributeModifier(id_attack, damage_key, baseAttack + (3 * props.hardness), 0);
                 stack.addAttributeModifier(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), attrAttack, EntityEquipmentSlot.MAINHAND);
 
                 break;
@@ -96,6 +107,73 @@ public class PropertyUtil {
                 //no additional logic provided, skipping
                 break;
         }
+    }
+
+    public static AttributeModifier findBaseAttribute(String attributeName, ItemStack stack, EntityEquipmentSlot slot) {
+
+        Collection<AttributeModifier> attrs = null;
+        String[] armor_id = {
+                "845DB27C-C624-495F-8C9F-6020A9A58B6B",
+                "D8499B04-0E66-4726-AB29-64469D734E0D",
+                "9F3D476D-C118-4544-8365-64846904B48E",
+                "2AD3F246-FEE1-4E67-B886-69FD380BB150"
+        };
+        String weapon_id = null;
+
+        attrs = stack.getAttributeModifiers(slot).get((attributeName));
+
+        //        if (slot == EntityEquipmentSlot.MAINHAND || slot == EntityEquipmentSlot.OFFHAND) {
+        //
+        //            if (attributeName.equals(SharedMonsterAttributes.ATTACK_SPEED.getName())) {
+        //                weapon_id = "FA233E1C-4180-4865-B01B-BCCE9785ACA3";
+        //            } else if (attributeName.equals(SharedMonsterAttributes.ATTACK_DAMAGE.getName())) {
+        //                weapon_id = "CB3F55D3-645C-4F38-A497-9C13A33DB5CF";
+        //            }
+        //
+        //            if (weapon_id == null) return null;
+        //
+        //            for (AttributeModifier attr : attrs) {
+        //                if (attr.getID().equals(UUID.fromString(weapon_id)))
+        //                    return attr;
+        //            }
+        //
+        //        } else {
+        //
+        //            for (AttributeModifier attr : attrs) {
+        //                for (String id : armor_id) {
+        //                    if (attr.getID().equals(UUID.fromString(id)))
+        //                        return attr;
+        //                }
+        //            }
+        //        }
+
+        if (attributeName.equals(SharedMonsterAttributes.ATTACK_SPEED.getName())) {
+
+            for (AttributeModifier attr : attrs) {
+                if (attr.getID().equals(UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3")))
+                    return attr;
+            }
+
+        } else if (attributeName.equals(SharedMonsterAttributes.ATTACK_DAMAGE.getName())) {
+
+            attrs = stack.getItem().getItemAttributeModifiers(slot).get(attributeName);
+
+            for (AttributeModifier attr : attrs) {
+                if (attr.getID().equals(UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF")))
+                    return attr;
+            }
+
+        } else if (attributeName.equals(SharedMonsterAttributes.ARMOR.getName())) {
+
+            for (AttributeModifier attr : attrs) {
+                for (String id : armor_id) {
+                    if (attr.getID().equals(UUID.fromString(id)))
+                        return attr;
+                }
+            }
+        }
+
+        return null;
     }
 
     public static UseType isToolOrArmor(ItemStack stack) {
