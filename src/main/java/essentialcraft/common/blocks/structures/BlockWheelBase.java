@@ -1,4 +1,4 @@
-package essentialcraft.common.blocks;
+package essentialcraft.common.blocks.structures;
 
 import essentialcraft.api.IHasModel;
 import essentialcraft.common.tiles.TileEntityWheelBase;
@@ -8,6 +8,7 @@ import essentialcraft.util.StructureUtil;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -32,10 +33,10 @@ public class BlockWheelBase extends BlockContainer{
         this.setTranslationKey(Main.MODID + "." + name);
         this.setCreativeTab(Main.tabEssentialCraft);
 
+        this.setHardness(5);
+
         BlockInit.BLOCKS.add(this);
     }
-
-
 
     @Override
     protected BlockStateContainer createBlockState()
@@ -96,7 +97,7 @@ public class BlockWheelBase extends BlockContainer{
 
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+        return EnumBlockRenderType.MODEL;
     }
 
     @Override

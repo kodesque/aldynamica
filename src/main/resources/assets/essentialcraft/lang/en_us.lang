@@ -8,7 +8,23 @@ item.essentialcraft.silverfish_caviar.name=Silverfish Caviar
 item.essentialcraft.dull_pill.name=Dull Pill
 
 item.essentialcraft.digestable_polymer.name=Digestable Polymer
-item.essentialcraft.polymer_clay.name=Polymer Clay
+item.essentialcraft.polymer_clay.name=Sculpting Polymer
+
+item.essentialcraft.clawlike_wedge.name=Wedging Claw
+item.essentialcraft.corundum.name=Rough Corundum
+item.essentialcraft.rhinestone.name=Rough Rhinestone
+item.essentialcraft.garnet.name=Rough Garnet
+
+#BLOCKS
+tile.essentialcraft.deposit_corundum.name=Corundum Deposit
+tile.essentialcraft.deposit_rhinestone.name=Rhinestone Deposit
+tile.essentialcraft.deposit_garnet.name=Garnet Deposit
+
+tile.essentialcraft.metallic_stone.name=Metallic Stone
+tile.essentialcraft.wheel_base.name=Machine Wheel
+
+tile.essentialcraft.gemcutter.name=Gemstone Cutting Table
+tile.essentialcraft.auxiliary_apparatus.name=Auxiliary Apparatus
 
 #CREATIVE TAB
 itemGroup.tabEssentialCraft=Essential Craft

@@ -3,19 +3,15 @@ package essentialcraft.init;
 import java.util.ArrayList;
 import java.util.List;
 
-import essentialcraft.common.blocks.BlockBrutefire;
-import essentialcraft.common.blocks.BlockWheelBase;
-import essentialcraft.common.blocks.BlockWheelFiller;
+import essentialcraft.common.blocks.BlockMineral;
+import essentialcraft.common.blocks.BlockMineralHalf;
+import essentialcraft.common.blocks.structures.BlockApparatus;
+import essentialcraft.common.blocks.structures.BlockGemcuttingTable;
+import essentialcraft.common.blocks.structures.BlockWheelBase;
+import essentialcraft.common.blocks.structures.BlockWheelFiller;
 import essentialcraft.common.templates.BlockBase;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFence;
-import net.minecraft.block.BlockPane;
-import net.minecraft.block.BlockSign;
-import net.minecraft.block.BlockWall;
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 
 public class BlockInit {
 
@@ -24,11 +20,21 @@ public class BlockInit {
     public static final Block STONE_METALLIC = new BlockBase("metallic_stone", Material.ROCK)
             .setHardness(2);
 
-    public static final Block WHEEL_BASE = new BlockWheelBase("wheel_base")
-            .setHardness(5);
+    public static final Block WHEEL_BASE = new BlockWheelBase("wheel_base");
 
-    public static final Block WHEEL_FILLER = new BlockWheelFiller("wheel_filler")
-            .setHardness(5);
+    public static final Block WHEEL_FILLER = new BlockWheelFiller("wheel_filler");
+
+    public static final Block DEPOSIT_CORUNDUM = new BlockMineral(BlockMineral.EnumOreTypes.CORUNDUM);
+    public static final Block CORUNDUM_HALF = new BlockMineralHalf(DEPOSIT_CORUNDUM);
+
+    public static final Block DEPOSIT_RHINESTONE = new BlockMineral(BlockMineral.EnumOreTypes.RHINESTONE);
+    public static final Block RHINESTONE_HALF = new BlockMineralHalf(DEPOSIT_RHINESTONE);
+
+    public static final Block DEPOSIT_GARNET = new BlockMineral(BlockMineral.EnumOreTypes.GARNET);
+    public static final Block GARNET_HALF = new BlockMineralHalf(DEPOSIT_GARNET);
+
+    public static final Block GEMCUTTER = new BlockGemcuttingTable(BlockGemcuttingTable.name);
+    public static final Block APPARATUS = new BlockApparatus(BlockApparatus.name);
 
     //    public static BlockBrutefire BRUTEFIRE_PRE = new BlockBrutefire("brutefire");
     //

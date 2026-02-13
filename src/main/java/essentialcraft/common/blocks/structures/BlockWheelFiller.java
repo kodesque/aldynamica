@@ -1,4 +1,4 @@
-package essentialcraft.common.blocks;
+package essentialcraft.common.blocks.structures;
 
 import essentialcraft.common.tiles.TileEntityWheelFiller;
 import essentialcraft.init.BlockInit;
@@ -24,6 +24,8 @@ public class BlockWheelFiller extends BlockContainer{
         this.setRegistryName(name);
         this.setTranslationKey(Main.MODID + "." + name);
         this.setCreativeTab(Main.tabEssentialCraft);
+
+        this.setHardness(5);
 
         BlockInit.BLOCKS.add(this);
     }

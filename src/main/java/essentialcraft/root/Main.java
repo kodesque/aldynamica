@@ -43,7 +43,7 @@ public class Main {
         proxy.preInit(event);
 
 
-        GameRegistry.registerTileEntity(TileEntityWheelBase.class, new ResourceLocation(MODID, "wheel"));
+        //        GameRegistry.registerTileEntity(TileEntityWheelBase.class, new ResourceLocation(MODID, "wheel"));
         GameRegistry.registerTileEntity(TileEntityWheelFiller.class, new ResourceLocation(MODID, "filler"));
     }
 

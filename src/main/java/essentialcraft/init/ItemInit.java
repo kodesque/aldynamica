@@ -3,20 +3,19 @@ package essentialcraft.init;
 import java.util.ArrayList;
 import java.util.List;
 
+import essentialcraft.common.blocks.structures.BlockApparatus;
+import essentialcraft.common.blocks.structures.BlockGemcuttingTable;
 import essentialcraft.common.items.ItemAttributeMold;
 import essentialcraft.common.items.ItemCaviar;
 import essentialcraft.common.items.ItemConductor;
 import essentialcraft.common.items.ItemCrowbar;
 import essentialcraft.common.items.ItemPill;
 import essentialcraft.common.items.ItemShowcase;
+import essentialcraft.common.items.ItemWedge;
 import essentialcraft.common.templates.ItemBase;
 import essentialcraft.common.templates.ItemBlockBase;
-import essentialcraft.root.Main;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.item.ItemBlock;
 
 public class ItemInit {
 
@@ -36,5 +35,23 @@ public class ItemInit {
 
     public static final Item STONE_METALLIC = new ItemBlockBase(BlockInit.STONE_METALLIC);
     public static final Item WHEEL_BASE = new ItemBlockBase(BlockInit.WHEEL_BASE);
+
+    public static final Item DEPOSIT_CORUNDUM = new ItemBlockBase(BlockInit.DEPOSIT_CORUNDUM);
+    public static final Item DEPOSIT_RHINESTONE = new ItemBlockBase(BlockInit.DEPOSIT_RHINESTONE);
+    public static final Item DEPOSIT_GARNET = new ItemBlockBase(BlockInit.DEPOSIT_GARNET);
+
+    public static final Item WEDGE = new ItemWedge(ItemWedge.name);
+
+    public static final Item GEM_CORUNDUM = new ItemBase("corundum");
+    public static final Item GEM_RHINESTONE = new ItemBase("rhinestone");
+    public static final Item GEM_GARNET = new ItemBase("garnet");
+
+    public static final Item GEMCUTTER = new ItemBlockBase(BlockInit.GEMCUTTER);
+    public static final Item APPARATUS = new ItemBlockBase(BlockInit.APPARATUS);
+
+    //    public static final Item GEM_TOURMALINE = new ItemBase("tourmaline");
+    //    public static final Item GEM_TOPAZ = new ItemBase("topaz");
+    //    public static final Item GEM_OPAL = new ItemBase("opal");
+
 
 }

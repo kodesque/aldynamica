@@ -1,10 +1,18 @@
 {
+  "forge_marker" : 1,
+  "defaults" : {
+      "textures" : {
+          "#material" : "minecraft:blocks/anvil_base"
+      },
+      "model" : "essentialcraft:wheel_small.obj",
+      "transform": "forge:default-block"
+  },
   "variants": {
-    "facing=down":  { "model": "essentialcraft:wheel_base" },
-    "facing=up":    { "model": "essentialcraft:wheel_base" },
-    "facing=north": { "model": "essentialcraft:wheel_base" },
-    "facing=south": { "model": "essentialcraft:wheel_base" },
-    "facing=west":  { "model": "essentialcraft:wheel_base" },
-    "facing=east":  { "model": "essentialcraft:wheel_base" }
+    "facing=down":  { "model": "essentialcraft:wheel_small.obj" },
+    "facing=up":    { "model": "essentialcraft:wheel_small.obj" },
+    "facing=north": { "model": "essentialcraft:wheel_small.obj" },
+    "facing=south": { "model": "essentialcraft:wheel_small.obj" },
+    "facing=west":  { "model": "essentialcraft:wheel_small.obj" },
+    "facing=east":  { "model": "essentialcraft:wheel_small.obj" }
   }
 }

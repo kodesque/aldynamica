@@ -4,14 +4,12 @@ import essentialcraft.api.IHasModel;
 import essentialcraft.init.BlockInit;
 import essentialcraft.init.ItemInit;
 import essentialcraft.init.PotionInit;
-import essentialcraft.init.TileEntityInit;
+import essentialcraft.init.SoundInit;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -32,6 +30,12 @@ public class RegistryEvents {
     @SubscribeEvent
     public static void onPotionRegister(RegistryEvent.Register<Potion> event) {
         event.getRegistry().registerAll(PotionInit.POTIONS.toArray(new Potion[0]));
+    }
+
+    @SubscribeEvent
+    public static void onSoundRegister(RegistryEvent.Register<SoundEvent> event) {
+
+        event.getRegistry().registerAll(SoundInit.SOUNDS.toArray(new SoundEvent[0]));
     }
 
     @SubscribeEvent

@@ -5,18 +5,19 @@ import java.util.function.Function;
 import org.lwjgl.opengl.GL11;
 
 import essentialcraft.common.tiles.TileEntityWheelBase;
+import essentialcraft.init.BlockInit;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BlockRendererDispatcher;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.IModel;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
@@ -60,7 +61,7 @@ public class RendererWheelBase extends TileEntitySpecialRenderer<TileEntityWheel
     public void render(TileEntityWheelBase te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
 
         GlStateManager.pushMatrix();
-        //        GlStateManager.pushAttrib();//
+        //        GlStateManager.pushAttrib();
 
         GlStateManager.translate(x + 0.5, y, z + 0.5);
         GlStateManager.scale(3f, 1f, 3f);
@@ -76,30 +77,17 @@ public class RendererWheelBase extends TileEntitySpecialRenderer<TileEntityWheel
 
         Tessellator tess = Tessellator.getInstance();
         BufferBuilder buffer = tess.getBuffer();
-        IBakedModel toDraw = this.getBakedModel();
-
-        if (toDraw == null) return;
 
         //Hard-drawing a model over a vanilla-initialized one
 
         buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.BLOCK);
 
-        for (EnumFacing side : EnumFacing.VALUES)
-        {
-            for (BakedQuad quad : toDraw.getQuads(null, side, 0))
-            {
-                buffer.addVertexData(quad.getVertexData());
-            }
-        }
+        BlockRendererDispatcher dispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
 
-        for (BakedQuad quad : toDraw.getQuads(null, null, 0))
-        {
-            buffer.addVertexData(quad.getVertexData());
-        }
+        IBlockState state = BlockInit.WHEEL_BASE.getDefaultState();
+        IBakedModel model = dispatcher.getModelForState(state);
 
-        // Ignore this piece, it's used only for blockstate-based render
-        //        BlockRendererDispatcher dispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
-        //        dispatcher.getBlockModelRenderer().renderModel(te.getWorld(), toDraw, te.getBlockType().getDefaultState(), te.getPos(), buffer, true);
+        dispatcher.getBlockModelRenderer().renderModel(te.getWorld(), model, te.getBlockType().getDefaultState(), te.getPos(), buffer, true);
 
 
         tess.draw();
