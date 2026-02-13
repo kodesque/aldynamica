@@ -1,0 +1,8 @@
+# Made in Blockbench 5.0.7
+newmtl m_049b1968-b94f-d532-6c95-e78464e778d3
+map_Kd essentialcraft:blocks/material_garnet
+newmtl m_0480bcb4-013f-4d35-4dbb-d8705e76b550
+map_Kd minecraft:blocks/stone_diorite
+newmtl m_5246a952-6ab8-b370-32ac-7e13dde059e4
+map_Kd essentialcraft:blocks/ores/crack_diorite
+newmtl none

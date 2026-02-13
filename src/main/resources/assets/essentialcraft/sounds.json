@@ -1,0 +1,20 @@
+{
+  "wedge_use": {
+    "category": "block",
+    "sounds": [
+      { "name": "essentialcraft:wedge_use", "stream": false }
+    ]
+  },
+  "crowbar_hit": {
+    "category": "block",
+    "sounds": [
+        { "name": "essentialcraft:crowbar_hit",  "stream": false}
+    ]
+  },
+  "ore_crack": {
+    "category": "block",
+    "sounds": [
+        { "name": "essentialcraft:ore_crack",  "stream": false}
+    ]
+  }
+}
