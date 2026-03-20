@@ -1,0 +1,39 @@
+package metamechanica.events.back;
+
+import metamechanica.api.ILeavesImprint;
+import metamechanica.capabilities.providers.AttributeImprintProvider;
+import metamechanica.capabilities.providers.MRULatticeProvider;
+import metamechanica.capabilities.providers.MRUStorageProvider;
+import metamechanica.capabilities.register.CapabilityAttributeImprint;
+import metamechanica.capabilities.register.CapabilityMRULattice;
+import metamechanica.capabilities.register.CapabilityMRUStorage;
+import metamechanica.common.items.ItemAttributeMold;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+@Mod.EventBusSubscriber
+public class AttachmentEvents {
+
+    @SubscribeEvent
+    public static void attachCapabilityEntity(AttachCapabilitiesEvent<Entity> event) {
+
+        if (event.getObject() instanceof EntityPlayer) {
+
+            event.addCapability(CapabilityMRUStorage.KEY, new MRUStorageProvider());
+            event.addCapability(CapabilityMRULattice.KEY, new MRULatticeProvider());
+        }
+    }
+
+    @SubscribeEvent
+    public static void attachCapabilityItemStack(AttachCapabilitiesEvent<ItemStack> event) {
+
+        if (event.getObject().getItem() instanceof ILeavesImprint || event.getObject().getItem() instanceof ItemAttributeMold) {
+            event.addCapability(CapabilityAttributeImprint.KEY, new AttributeImprintProvider());
+        }
+    }
+
+}

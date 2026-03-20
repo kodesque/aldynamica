@@ -1,0 +1,38 @@
+#ITEMS
+item.metamechanica.conductor_dummy.name=Conductor Dummy
+item.metamechanica.attribute_mold.name=Attribute Mold
+
+item.metamechanica.soldering_crowbar.name=Soldering Crowbar
+item.metamechanica.debug.name=Apple of Debug
+
+item.metamechanica.silverfish_caviar.name=Silverfish Caviar
+
+item.metamechanica.clawlike_wedge.name=Wedging Claw
+item.metamechanica.corundum.name=Rough Corundum
+item.metamechanica.rhinestone.name=Rough Rhinestone
+item.metamechanica.garnet.name=Rough Garnet
+
+#BLOCKS
+tile.metamechanica.deposit_corundum.name=Corundum Deposit
+tile.metamechanica.deposit_rhinestone.name=Rhinestone Deposit
+tile.metamechanica.deposit_garnet.name=Garnet Deposit
+
+#CREATIVE TAB
+itemGroup.tabMetamechanica=I'm Metamechanica!
+
+#TOOLTIPS
+tooltip.metamechanica.conductor_dummy.inactive=§7Bind with §5[Shift + RMB] §7while in hand
+tooltip.metamechanica.conductor_dummy.owner=Owner:
+tooltip.metamechanica.conductor_dummy.charge=Lattice charge:
+tooltip.metamechanica.conductor_dummy.coherence=Lattice coherence:
+
+tooltip.metamechanica.attribute_mold.bound_item=Bound with:
+tooltip.metamechanica.attribute_mold.imprint=Imprint:
+tooltip.metamechanica.attribute_mold.inactive=§7Bind with §5[RMB] §7in inventory
+
+tooltip.metamechanica.properties.spare_durability=Spare Durability:
+tooltip.metamechanica.properties.lightness=Lightness:
+tooltip.metamechanica.properties.stiffness=Hardness:
+tooltip.metamechanica.properties.hardness=Stiffness:
+
+tooltip.metamechanica.soldering_crowbar.description=§7§oRepairs anvils, attunes machines and crushes bones

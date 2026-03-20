@@ -1,0 +1,13 @@
+{
+    "forge_marker" : 1,
+    "defaults" : {
+        "model" : "metamechanica:ores/corundum_half.obj",
+        "transform": "forge:default-block"
+    },
+    "variants": {
+      "facing=north": { "model": "metamechanica:ores/corundum_half.obj", "y": 180},
+      "facing=south": { "model": "metamechanica:ores/corundum_half.obj" },
+      "facing=west":  { "model": "metamechanica:ores/corundum_half.obj", "y": 90 },
+      "facing=east":  { "model": "metamechanica:ores/corundum_half.obj", "y": 270 }
+    }
+}

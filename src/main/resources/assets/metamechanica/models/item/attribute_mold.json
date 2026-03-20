@@ -1,0 +1,12 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "metamechanica:items/attribute_mold"
+  },
+  "overrides": [
+    {
+      "predicate": { "metamechanica:bound": 1 },
+      "model": "metamechanica:item/attribute_mold_bound"
+    }
+  ]
+}

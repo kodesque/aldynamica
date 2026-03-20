@@ -1,8 +1,0 @@
-# Made in Blockbench 5.0.7
-newmtl m_1746b29c-aa4b-9605-5897-0abe309a7bcb
-map_Kd essentialcraft:blocks/material_corundum
-newmtl m_c3f9b37a-9049-67bc-7421-8542e798efe3
-map_Kd minecraft:blocks/stone_granite
-newmtl m_6bc46262-0839-a539-0f82-87109beb3d8f
-map_Kd essentialcraft:blocks/ores/crack_granite
-newmtl none

@@ -1,0 +1,10 @@
+# Made in Blockbench 5.0.7
+newmtl m_fe35298d-4951-981a-f26a-a16c8a40c1ec
+map_Kd metamechanica:blocks/material_corundum
+newmtl m_a26d68ba-7299-f1ae-f748-3475f9cf500e
+map_Kd minecraft:blocks/stone_granite
+newmtl m_5c91c9f7-3d0b-21a7-04d7-e56df50af9ec
+map_Kd metamechanica:blocks/mineral_inside
+newmtl m_b4625d33-98f3-4892-de4b-fcd409094ef2
+map_Kd metamechanica:blocks/ores/cut_granite
+newmtl none
