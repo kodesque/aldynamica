@@ -13,7 +13,6 @@ public class BlockBase extends Block{
 
         this.setRegistryName(name);
         this.setTranslationKey(Main.MODID + "." + name);
-        this.setCreativeTab(Main.tabEssentialCraft);
 
         this.setHardness(this.blockHardness);
 

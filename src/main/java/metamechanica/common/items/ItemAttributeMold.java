@@ -42,19 +42,18 @@ public class ItemAttributeMold extends ItemBase {
                 new IItemPropertyGetter() {
             @Override
             public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn) {
-                return ItemAttributeMold.getPropertyBound(stack, entityIn);
+                return ItemAttributeMold.getProperty(stack, entityIn);
             }
         });
     }
 
-    public static float getPropertyBound (ItemStack stack, @Nullable EntityLivingBase entityIn) {
+    public static float getProperty (ItemStack stack, @Nullable EntityLivingBase entityIn) {
 
-        //        if (entityIn != null) {
         if (!stack.isEmpty() && stack.getItem() instanceof ItemAttributeMold) {
             if (stack.getSubCompound(Main.MODID) != null)
                 return stack.getSubCompound(Main.MODID).getDouble(ItemAttributeMold.key) != 0 ? 1 : 0;
         }
-        //        }
+
         return 0;
     }
 

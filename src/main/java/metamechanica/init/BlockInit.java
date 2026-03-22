@@ -3,6 +3,7 @@ package metamechanica.init;
 import java.util.ArrayList;
 import java.util.List;
 
+import metamechanica.common.blocks.BlockMetalPile;
 import metamechanica.common.blocks.BlockMineral;
 import metamechanica.common.blocks.BlockMineralHalf;
 import metamechanica.common.templates.BlockBase;
@@ -21,5 +22,7 @@ public class BlockInit {
 
     public static final Block DEPOSIT_GARNET = new BlockMineral(BlockMineral.EnumOreTypes.GARNET);
     public static final Block GARNET_HALF = new BlockMineralHalf(DEPOSIT_GARNET);
+
+    public static final Block METAL_PILE = new BlockMetalPile(BlockMetalPile.name);
 
 }

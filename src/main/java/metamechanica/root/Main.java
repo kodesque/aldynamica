@@ -49,7 +49,7 @@ public class Main {
     public void serverLoad(FMLServerStartingEvent event) {
     }
 
-    public static CreativeTabs tabEssentialCraft = new CreativeTabs("tabMetamechanica") {
+    public static CreativeTabs tabMod = new CreativeTabs("tabMetamechanica") {
         @Override
         @SideOnly(Side.CLIENT)
         public ItemStack createIcon() {

@@ -3,7 +3,9 @@ item.metamechanica.conductor_dummy.name=Conductor Dummy
 item.metamechanica.attribute_mold.name=Attribute Mold
 
 item.metamechanica.soldering_crowbar.name=Soldering Crowbar
-item.metamechanica.debug.name=Apple of Debug
+item.metamechanica.debug.name=Blackbox
+
+item.metamechanica.record_found.name=Unknown Record
 
 item.metamechanica.silverfish_caviar.name=Silverfish Caviar
 
@@ -28,7 +30,7 @@ tooltip.metamechanica.conductor_dummy.coherence=Lattice coherence:
 
 tooltip.metamechanica.attribute_mold.bound_item=Bound with:
 tooltip.metamechanica.attribute_mold.imprint=Imprint:
-tooltip.metamechanica.attribute_mold.inactive=§7Bind with §5[RMB] §7in inventory
+tooltip.metamechanica.attribute_mold.inactive=§7Bind with §5[RMB] §7while in inventory
 
 tooltip.metamechanica.properties.spare_durability=Spare Durability:
 tooltip.metamechanica.properties.lightness=Lightness:
@@ -36,3 +38,4 @@ tooltip.metamechanica.properties.stiffness=Hardness:
 tooltip.metamechanica.properties.hardness=Stiffness:
 
 tooltip.metamechanica.soldering_crowbar.description=§7§oRepairs anvils, attunes machines and crushes bones
+tooltip.metamechanica.clawlike_wedge.description=§7§oOpens underground deposits

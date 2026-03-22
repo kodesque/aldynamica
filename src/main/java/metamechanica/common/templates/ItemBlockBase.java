@@ -13,7 +13,6 @@ public class ItemBlockBase extends ItemBlock implements IHasModel {
 
         this.setRegistryName(block.getRegistryName());
         this.setTranslationKey(block.getTranslationKey());
-        this.setCreativeTab(Main.tabEssentialCraft);
 
         ItemInit.ITEMS.add(this);
     }

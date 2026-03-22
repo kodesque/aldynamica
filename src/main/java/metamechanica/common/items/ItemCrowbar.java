@@ -44,7 +44,6 @@ public class ItemCrowbar extends ItemPickaxe implements IHasModel, ILeavesImprin
 
         this.setRegistryName(name);
         this.setTranslationKey(Main.MODID + "." + name);
-        this.setCreativeTab(Main.tabEssentialCraft);
 
         ItemInit.ITEMS.add(this);
     }

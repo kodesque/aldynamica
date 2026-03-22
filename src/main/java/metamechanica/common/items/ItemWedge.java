@@ -3,13 +3,17 @@ package metamechanica.common.items;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import metamechanica.common.blocks.BlockMineral;
 import metamechanica.common.blocks.BlockMineralHalf;
 import metamechanica.common.templates.ItemBase;
 import metamechanica.init.BlockInit;
 import metamechanica.init.SoundInit;
+import metamechanica.root.Main;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
@@ -17,7 +21,10 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import scala.actors.threadpool.Arrays;
 
 public class ItemWedge extends ItemBase {
@@ -29,6 +36,15 @@ public class ItemWedge extends ItemBase {
 
         this.setMaxDamage(16);
         this.setMaxStackSize(1);
+    }
+
+    TextComponentTranslation description = new TextComponentTranslation("tooltip." + Main.MODID + "." + name + ".description");
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        super.addInformation(stack, worldIn, tooltip, flagIn);
+        tooltip.add(this.description.getFormattedText());
     }
 
     @Override

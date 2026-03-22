@@ -1,24 +1,13 @@
 
 package metamechanica.network.proxy;
 
-import java.util.HashMap;
-import java.util.UUID;
-
 import metamechanica.root.Main;
-import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.Item;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.obj.OBJLoader;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -33,9 +22,23 @@ public class ClientProxy extends CommonProxy {
     }
 
     @Override
+    public void registerItemVariants(Item item, int meta, String... names) {
+        for (String name : names) {
+            ModelBakery.registerItemVariants(item,
+                    new ResourceLocation(Main.MODID, name));
+        }
+    }
+
+    @Override
     public void registerItemRenderer(Item item, int meta, String id) {
 
         ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), id));
+    }
+
+    @Override
+    public void registerMetaRenderer(Item item, String name, int meta, String id) {
+
+        ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(name, id));
     }
 
 }
