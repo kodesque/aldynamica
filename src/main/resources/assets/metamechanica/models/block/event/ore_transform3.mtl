@@ -1,0 +1,10 @@
+# Made in Blockbench 5.0.7
+newmtl m_a9ccf307-4975-cbd3-0a33-e7985d06e903
+map_Kd minecraft:items/iron_ingot
+newmtl m_c7b744c8-e9d1-ab81-a97d-7739c2954e15
+map_Kd minecraft:items/iron_nugget
+newmtl m_8d66721a-1083-0fed-6951-913bc8dde7a3
+map_Kd metamechanica:blocks/material_iron
+newmtl m_7c911e7c-023e-b6f0-626e-68270d9d5eee
+map_Kd minecraft:blocks/stone
+newmtl none
