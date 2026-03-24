@@ -9,7 +9,7 @@ import metamechanica.api.ILeavesImprint;
 import metamechanica.capabilities.register.CapabilityAttributeImprint;
 import metamechanica.common.items.ItemAttributeMold;
 import metamechanica.network.Network;
-import metamechanica.network.PacketBindMold;
+import metamechanica.network.packets.PacketBindMold;
 import metamechanica.root.Main;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;

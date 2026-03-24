@@ -1,4 +1,4 @@
-package metamechanica.network;
+package metamechanica.network.packets;
 
 import io.netty.buffer.ByteBuf;
 import metamechanica.api.ILeavesImprint;

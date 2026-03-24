@@ -3,7 +3,7 @@ package metamechanica.events.front;
 import metamechanica.api.IMRUStorage;
 import metamechanica.capabilities.register.CapabilityMRUStorage;
 import metamechanica.network.Network;
-import metamechanica.network.PacketUpdateStorage;
+import metamechanica.network.packets.PacketUpdateStorage;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;

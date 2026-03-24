@@ -39,3 +39,11 @@ tooltip.metamechanica.properties.hardness=Stiffness:
 
 tooltip.metamechanica.soldering_crowbar.description=§7§oRepairs anvils, attunes machines and crushes bones
 tooltip.metamechanica.clawlike_wedge.description=§7§oOpens underground deposits
+
+tooltip.metamechanica.record_found.description=§6This music can stir up even the inanimate!
+tooltip.metamechanica.record_found.description=§7§oWorks on the following:
+
+#INTERACTIONS
+
+event.metamechanica.record_found.use=It's too thick to fit in the jukebox. Maybe I can spin it by hitting with some hard rock?
+event.metamechanica.record_found.fail=Sparks fly from the record, but nothing seems to happen. Maybe I missed something?

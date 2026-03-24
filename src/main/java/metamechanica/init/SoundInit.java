@@ -14,5 +14,7 @@ public class SoundInit {
     public static SoundEvent ORE_CRACK = new SoundEventBase("ore_crack");
     public static SoundEvent CROWBAR_HIT = new SoundEventBase("crowbar_hit");
 
+    public static SoundEvent RECORD_STRIKE = new SoundEventBase("record_strike");
+
 
 }

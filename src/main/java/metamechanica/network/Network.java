@@ -1,7 +1,10 @@
 package metamechanica.network;
 
+import metamechanica.network.packets.PacketBindMold;
+import metamechanica.network.packets.PacketSpawnParticles;
+import metamechanica.network.packets.PacketUpdateLattice;
+import metamechanica.network.packets.PacketUpdateStorage;
 import metamechanica.root.Main;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -34,6 +37,13 @@ public class Network {
                 PacketBindMold.class,
                 packetId++,
                 Side.SERVER
+                );
+
+        INSTANCE.registerMessage(
+                PacketSpawnParticles.Handler.class,
+                PacketSpawnParticles.class,
+                packetId++,
+                Side.CLIENT
                 );
     }
 
