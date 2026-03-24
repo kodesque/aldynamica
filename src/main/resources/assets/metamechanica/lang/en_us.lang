@@ -19,6 +19,8 @@ tile.metamechanica.deposit_corundum.name=Corundum Deposit
 tile.metamechanica.deposit_rhinestone.name=Rhinestone Deposit
 tile.metamechanica.deposit_garnet.name=Garnet Deposit
 
+tile.metamechanica.ore_transform.name=Iron Ore
+
 #CREATIVE TAB
 itemGroup.tabMetamechanica=I'm Metamechanica!
 
@@ -40,8 +42,8 @@ tooltip.metamechanica.properties.hardness=Stiffness:
 tooltip.metamechanica.soldering_crowbar.description=§7§oRepairs anvils, attunes machines and crushes bones
 tooltip.metamechanica.clawlike_wedge.description=§7§oOpens underground deposits
 
-tooltip.metamechanica.record_found.description=§6This music can stir up even the inanimate!
-tooltip.metamechanica.record_found.description=§7§oWorks on the following:
+tooltip.metamechanica.record_found.description.main=§6This music can stir up even the inanimate!
+tooltip.metamechanica.record_found.description.sub=§7§oWorks on the following:
 
 #INTERACTIONS
 

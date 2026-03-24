@@ -64,8 +64,7 @@ public class ItemRecordFound extends ItemBase implements IHasMeta {
         tooltip.add(this.main.getFormattedText());
         tooltip.add(this.sub.getFormattedText());
 
-        tooltip.add("-" + " " + new ItemStack (BlockInit.HEAP_METAL).getDisplayName());
-        tooltip.add("-" + " " + new ItemStack (Blocks.IRON_BARS).getDisplayName());
+        tooltip.add("-" + " " + new ItemStack (Blocks.IRON_ORE).getDisplayName());
         tooltip.add("-" + " " + new ItemStack (Blocks.CLAY).getDisplayName());
     }
 
@@ -76,7 +75,6 @@ public class ItemRecordFound extends ItemBase implements IHasMeta {
         ItemStack offhand = playerIn.getHeldItem(EnumHand.OFF_HAND);
 
         if (offhand.getItem().equals(Items.FLINT)) {
-            //launch animation
 
             worldIn.playSound(
                     null,
@@ -89,11 +87,10 @@ public class ItemRecordFound extends ItemBase implements IHasMeta {
 
             if (RecordEventUtil.findValidBlocks(worldIn, playerIn.getPosition()) != null) {
                 RecordEventUtil.startEvent(playerIn, null, worldIn);
+                hand.setItemDamage(1);
             } else {
                 playerIn.sendStatusMessage(new TextComponentString(I18n.format(this.fail.getFormattedText())), true);
             }
-
-            hand.setItemDamage(1);
 
             return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
         } else {

@@ -30,8 +30,6 @@ public class ItemInit {
     public static final Item DEPOSIT_RHINESTONE = new ItemBlockBase(BlockInit.DEPOSIT_RHINESTONE);
     public static final Item DEPOSIT_GARNET = new ItemBlockBase(BlockInit.DEPOSIT_GARNET);
 
-    public static final Item METAL_PILE = new ItemBlockBase(BlockInit.METAL_PILE);
-
     public static final Item WEDGE = new ItemWedge(ItemWedge.name);
 
     public static final Item GEM_CORUNDUM = new ItemBase("corundum");

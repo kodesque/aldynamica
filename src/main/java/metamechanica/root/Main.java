@@ -2,21 +2,21 @@ package metamechanica.root;
 
 import metamechanica.capabilities.register.CapabilityMRULattice;
 import metamechanica.capabilities.register.CapabilityMRUStorage;
+import metamechanica.client.render.entity.RenderBillet;
+import metamechanica.common.entities.EntityBillet;
 import metamechanica.init.ItemInit;
 import metamechanica.network.Network;
 import metamechanica.network.proxy.CommonProxy;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -31,13 +31,21 @@ public class Main {
     @SidedProxy(clientSide = "metamechanica.network.proxy.ClientProxy", serverSide = "metamechanica.network.proxy.CommonProxy")
     public static CommonProxy proxy;
 
+    @Mod.Instance
+    public static Main instance;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         CapabilityMRUStorage.register();
         CapabilityMRULattice.register();
+
         Network.registerPackets();
         proxy.preInit(event);
+
+        RenderingRegistry.registerEntityRenderingHandler(
+                EntityBillet.class,
+                renderManager -> new RenderBillet(renderManager)
+                );
 
     }
 

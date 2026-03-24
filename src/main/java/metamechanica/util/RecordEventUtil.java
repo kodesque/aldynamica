@@ -5,13 +5,13 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import metamechanica.common.blocks.BlockOreTransform;
+import metamechanica.common.entities.EntityBillet;
 import metamechanica.init.BlockInit;
 import metamechanica.init.SoundInit;
 import metamechanica.network.Network;
 import metamechanica.network.packets.PacketSpawnParticles;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -43,7 +43,7 @@ public class RecordEventUtil {
                     TimePos timepos = buildTasks.get(id);
                     ValidBlocks bundle = findValidBlocks(timepos.world, timepos.pos);
 
-                    if (timepos != null) {
+                    if (timepos != null && bundle != null) {
 
                         timepos.ticksLeft--;
 
@@ -55,6 +55,7 @@ public class RecordEventUtil {
                             int last = timepos.world.getBlockState(bundle.orePos.get(0)).getValue(BlockOreTransform.STAGE);
                             int next = last + 1 < 4 ? last + 1 : last;
                             //TODO: add different particles for different stages. Ignore for now
+                            //TODO: add different sound effects for different stages. Ignore for now
 
                             timepos.world.setBlockState(bundle.orePos.get(0), BlockInit.ORE_TRANSFORM.getDefaultState().withProperty(BlockOreTransform.STAGE, next));
 
@@ -63,11 +64,11 @@ public class RecordEventUtil {
                             }
 
                             bundle.orePos.remove(0);
-                        }
-
-                        if (timepos.ticksLeft == 0) {
+                        } else if (timepos.ticksLeft == 0) {
                             timepos.world.destroyBlock(bundle.clayPos, false);
-                            //TODO: add mob summon. Ignore for now
+
+                            EntityBillet billet = new EntityBillet(timepos.world);
+                            timepos.world.spawnEntity(billet);
                         }
 
                         buildTasks.remove(id);
