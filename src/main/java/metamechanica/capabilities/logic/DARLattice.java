@@ -1,9 +1,9 @@
 package metamechanica.capabilities.logic;
 
-import metamechanica.api.IMRULattice;
+import metamechanica.api.IDARLattice;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class MRULattice implements IMRULattice{
+public class DARLattice implements IDARLattice{
 
     private int amount = 100;
     public static final String name = "MRU_lattice";

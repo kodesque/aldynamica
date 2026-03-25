@@ -2,7 +2,7 @@ package metamechanica.capabilities.register;
 
 
 import metamechanica.api.IAttributeImprint;
-import metamechanica.api.IMRUStorage;
+import metamechanica.api.IDARStorage;
 import metamechanica.capabilities.logic.AttributeImprint;
 import metamechanica.root.Main;
 import net.minecraft.nbt.NBTBase;

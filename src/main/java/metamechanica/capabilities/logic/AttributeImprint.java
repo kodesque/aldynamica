@@ -1,7 +1,7 @@
 package metamechanica.capabilities.logic;
 
 import metamechanica.api.IAttributeImprint;
-import metamechanica.api.IMRUStorage;
+import metamechanica.api.IDARStorage;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class AttributeImprint implements IAttributeImprint{

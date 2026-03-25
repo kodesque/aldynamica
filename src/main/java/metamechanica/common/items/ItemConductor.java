@@ -11,13 +11,13 @@ import javax.annotation.Nullable;
 import com.google.common.base.Supplier;
 
 import ibxm.Player;
-import metamechanica.api.IMRULattice;
-import metamechanica.api.IMRUStorage;
-import metamechanica.capabilities.logic.MRULattice;
-import metamechanica.capabilities.logic.MRUStorage;
-import metamechanica.capabilities.providers.MRUStorageProvider;
-import metamechanica.capabilities.register.CapabilityMRULattice;
-import metamechanica.capabilities.register.CapabilityMRUStorage;
+import metamechanica.api.IDARLattice;
+import metamechanica.api.IDARStorage;
+import metamechanica.capabilities.logic.DARLattice;
+import metamechanica.capabilities.logic.DARStorage;
+import metamechanica.capabilities.providers.DARStorageProvider;
+import metamechanica.capabilities.register.CapabilityDARLattice;
+import metamechanica.capabilities.register.CapabilityDARStorage;
 import metamechanica.common.templates.ItemBase;
 import metamechanica.events.front.GenericEvents;
 import metamechanica.init.ItemInit;
@@ -73,8 +73,8 @@ public class ItemConductor extends ItemBase{
         if (playerIn.isSneaking()) {
 
             if (!worldIn.isRemote) {
-                IMRULattice lattice = playerIn.getCapability(CapabilityMRULattice.CAP, null);
-                IMRUStorage charge = playerIn.getCapability(CapabilityMRUStorage.CAP, null);
+                IDARLattice lattice = playerIn.getCapability(CapabilityDARLattice.CAP, null);
+                IDARStorage charge = playerIn.getCapability(CapabilityDARStorage.CAP, null);
                 Network.sendToPlayerMP(new PacketUpdateLattice(lattice.getAmount()), (EntityPlayerMP) playerIn);
                 Network.sendToPlayerMP(new PacketUpdateStorage(charge.getAmount()), (EntityPlayerMP) playerIn);
             }
@@ -107,8 +107,8 @@ public class ItemConductor extends ItemBase{
 
                 if(Minecraft.getMinecraft().player.equals(player)) {
 
-                    tooltip.add(this.charge.getFormattedText() + " " + player.getCapability(CapabilityMRUStorage.CAP, null).getAmount() + " MRU");
-                    tooltip.add(this.coherence.getFormattedText() + " " + player.getCapability(CapabilityMRULattice.CAP, null).getAmount() + "%");
+                    tooltip.add(this.charge.getFormattedText() + " " + player.getCapability(CapabilityDARStorage.CAP, null).getAmount() + " DAR");
+                    tooltip.add(this.coherence.getFormattedText() + " " + player.getCapability(CapabilityDARLattice.CAP, null).getAmount() + "%");
                 }
             } else {
 

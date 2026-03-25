@@ -1,8 +1,8 @@
 package metamechanica.network.packets;
 
 import io.netty.buffer.ByteBuf;
-import metamechanica.api.IMRULattice;
-import metamechanica.capabilities.register.CapabilityMRULattice;
+import metamechanica.api.IDARLattice;
+import metamechanica.capabilities.register.CapabilityDARLattice;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.client.FMLClientHandler;
@@ -45,7 +45,7 @@ public class PacketUpdateLattice implements IMessage {
         @SideOnly(Side.CLIENT)
         public IMessage onMessage(PacketUpdateLattice message, MessageContext ctx) {
             EntityPlayer player = FMLClientHandler.instance().getClientPlayerEntity();
-            IMRULattice lattice = player.getCapability(CapabilityMRULattice.CAP, null);
+            IDARLattice lattice = player.getCapability(CapabilityDARLattice.CAP, null);
 
             if (lattice != null) {
                 lattice.setAmount(message.getAmount());

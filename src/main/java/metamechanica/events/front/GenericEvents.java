@@ -3,8 +3,8 @@ package metamechanica.events.front;
 import java.util.Map;
 
 import metamechanica.capabilities.register.CapabilityAttributeImprint;
-import metamechanica.capabilities.register.CapabilityMRULattice;
-import metamechanica.capabilities.register.CapabilityMRUStorage;
+import metamechanica.capabilities.register.CapabilityDARLattice;
+import metamechanica.capabilities.register.CapabilityDARStorage;
 import metamechanica.common.items.ItemAttributeMold;
 import metamechanica.common.items.ItemCrowbar;
 import metamechanica.init.ItemInit;

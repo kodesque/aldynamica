@@ -1,7 +1,7 @@
 package metamechanica.events.front;
 
-import metamechanica.api.IMRUStorage;
-import metamechanica.capabilities.register.CapabilityMRUStorage;
+import metamechanica.api.IDARStorage;
+import metamechanica.capabilities.register.CapabilityDARStorage;
 import metamechanica.network.Network;
 import metamechanica.network.packets.PacketUpdateStorage;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,7 +21,7 @@ public class LatticeEvents {
         EntityLivingBase entity = event.getEntityLiving();
         if (event.getSource().getTrueSource() instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
-            IMRUStorage storage = player.getCapability(CapabilityMRUStorage.CAP, null);
+            IDARStorage storage = player.getCapability(CapabilityDARStorage.CAP, null);
             storage.addAmount((int) entity.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).getAttributeValue());
             Network.sendToPlayerMP(new PacketUpdateStorage(storage.getAmount()), (EntityPlayerMP) player);
 

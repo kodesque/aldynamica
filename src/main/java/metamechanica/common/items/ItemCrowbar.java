@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 import metamechanica.api.IAttributeImprint;
 import metamechanica.api.IHasModel;
 import metamechanica.api.ILeavesImprint;
-import metamechanica.api.IMRUStorage;
+import metamechanica.api.IDARStorage;
 import metamechanica.init.ItemInit;
 import metamechanica.init.SoundInit;
 import metamechanica.root.Main;

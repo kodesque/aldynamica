@@ -1,25 +1,25 @@
 package metamechanica.capabilities.providers;
 
-import metamechanica.capabilities.logic.MRULattice;
-import metamechanica.capabilities.register.CapabilityMRULattice;
+import metamechanica.capabilities.logic.DARStorage;
+import metamechanica.capabilities.register.CapabilityDARStorage;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 
-public class MRULatticeProvider implements ICapabilitySerializable<NBTTagCompound> {
+public class DARStorageProvider implements ICapabilitySerializable<NBTTagCompound>{
 
-    private final MRULattice instance = new MRULattice();
+    private final DARStorage instance = new DARStorage();
 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-        return capability == CapabilityMRULattice.CAP;
+        return capability == CapabilityDARStorage.CAP;
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-        return (capability == CapabilityMRULattice.CAP) ? (T) this.instance : null;
+        return (capability == CapabilityDARStorage.CAP) ? (T) this.instance : null;
     }
 
     @Override
@@ -31,5 +31,4 @@ public class MRULatticeProvider implements ICapabilitySerializable<NBTTagCompoun
     public void deserializeNBT(NBTTagCompound nbt) {
         this.instance.deserializeNBT(nbt);
     }
-
 }

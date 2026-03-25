@@ -1,9 +1,9 @@
 package metamechanica.capabilities.logic;
 
-import metamechanica.api.IMRUStorage;
+import metamechanica.api.IDARStorage;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class MRUStorage implements IMRUStorage{
+public class DARStorage implements IDARStorage{
 
     private int amount = 0;
     public static final String name = "MRU_storage";

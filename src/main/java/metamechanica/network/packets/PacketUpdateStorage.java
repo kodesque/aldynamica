@@ -1,10 +1,10 @@
 package metamechanica.network.packets;
 
 import io.netty.buffer.ByteBuf;
-import metamechanica.api.IMRULattice;
-import metamechanica.api.IMRUStorage;
-import metamechanica.capabilities.register.CapabilityMRULattice;
-import metamechanica.capabilities.register.CapabilityMRUStorage;
+import metamechanica.api.IDARLattice;
+import metamechanica.api.IDARStorage;
+import metamechanica.capabilities.register.CapabilityDARLattice;
+import metamechanica.capabilities.register.CapabilityDARStorage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -46,7 +46,7 @@ public class PacketUpdateStorage implements IMessage {
         @SideOnly(Side.CLIENT)
         public IMessage onMessage(PacketUpdateStorage message, MessageContext ctx) {
             EntityPlayer player = FMLClientHandler.instance().getClientPlayerEntity();
-            IMRUStorage lattice = player.getCapability(CapabilityMRUStorage.CAP, null);
+            IDARStorage lattice = player.getCapability(CapabilityDARStorage.CAP, null);
 
             if (lattice != null) {
                 lattice.setAmount(message.getAmount());

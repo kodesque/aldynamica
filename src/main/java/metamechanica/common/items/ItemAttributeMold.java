@@ -5,8 +5,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import metamechanica.capabilities.register.CapabilityAttributeImprint;
-import metamechanica.capabilities.register.CapabilityMRULattice;
-import metamechanica.capabilities.register.CapabilityMRUStorage;
+import metamechanica.capabilities.register.CapabilityDARLattice;
+import metamechanica.capabilities.register.CapabilityDARStorage;
 import metamechanica.common.templates.ItemBase;
 import metamechanica.root.Main;
 import net.minecraft.client.Minecraft;

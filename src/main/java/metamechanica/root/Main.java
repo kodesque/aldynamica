@@ -1,7 +1,7 @@
 package metamechanica.root;
 
-import metamechanica.capabilities.register.CapabilityMRULattice;
-import metamechanica.capabilities.register.CapabilityMRUStorage;
+import metamechanica.capabilities.register.CapabilityDARLattice;
+import metamechanica.capabilities.register.CapabilityDARStorage;
 import metamechanica.client.render.entity.RenderBillet;
 import metamechanica.common.entities.EntityBillet;
 import metamechanica.init.ItemInit;
@@ -36,8 +36,8 @@ public class Main {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        CapabilityMRUStorage.register();
-        CapabilityMRULattice.register();
+        CapabilityDARStorage.register();
+        CapabilityDARLattice.register();
 
         Network.registerPackets();
         proxy.preInit(event);
