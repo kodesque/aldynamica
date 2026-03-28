@@ -3,8 +3,9 @@ package metamechanica.init;
 import java.util.ArrayList;
 import java.util.List;
 
-import metamechanica.common.blocks.BlockMineral;
-import metamechanica.common.blocks.BlockMineralHalf;
+import metamechanica.common.blocks.scene.BlockBedrockTight;
+import metamechanica.common.blocks.world.BlockMineral;
+import metamechanica.common.blocks.world.BlockMineralHalf;
 import metamechanica.common.templates.BlockBase;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -24,4 +25,7 @@ public class BlockInit {
 
     public static final Block ORE_TRANSFORM = new BlockBase("ore_transform", Material.IRON).setHardness(0.5F);
 
+    public static final Block NERVE_STEM = new BlockBase("nerve_stem", Material.ROCK).setHardness(0.5F);
+    public static final Block NERVE_BULB = new BlockBedrockTight("nerve_bulb");
+    public static final Block NERVE_KNOT = new BlockBase("nerve_knot", Material.ROCK).setHardness(0.5F);
 }

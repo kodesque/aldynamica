@@ -1,8 +1,9 @@
-package metamechanica.common.blocks;
+package metamechanica.common.blocks.scene;
 
 import metamechanica.common.templates.BlockBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
@@ -13,22 +14,21 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockOreTransform extends BlockBase {
+public class BlockBedrockTight extends BlockBase {
 
-    public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 3);
+    public static final PropertyInteger PHASE = PropertyInteger.create("phase", 0, 2);
 
-    public BlockOreTransform(String name, Material materialIn) {
-        super(name, materialIn);
+    public BlockBedrockTight(String name) {
+        super(name, Material.BARRIER);
+        this.setBlockUnbreakable();
 
-        this.setHardness(3);
-        this.setHarvestLevel("pickaxe", 1);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(STAGE, 0));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(PHASE, 0));
     }
 
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {STAGE});
+        return new BlockStateContainer(this, new IProperty[] {PHASE});
     }
 
     @Override
@@ -58,12 +58,12 @@ public class BlockOreTransform extends BlockBase {
 
     @Override
     public int getMetaFromState(IBlockState state) {
-        return state.getValue(STAGE);
+        return state.getValue(PHASE);
     }
 
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(STAGE, meta);
+        return this.getDefaultState().withProperty(PHASE, meta);
     }
 
 }

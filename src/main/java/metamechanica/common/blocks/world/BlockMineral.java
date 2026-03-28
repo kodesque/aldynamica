@@ -1,4 +1,4 @@
-package metamechanica.common.blocks;
+package metamechanica.common.blocks.world;
 
 import java.util.ArrayList;
 import java.util.Arrays;

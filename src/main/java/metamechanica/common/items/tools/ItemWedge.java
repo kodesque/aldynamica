@@ -1,12 +1,12 @@
-package metamechanica.common.items;
+package metamechanica.common.items.tools;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nullable;
 
-import metamechanica.common.blocks.BlockMineral;
-import metamechanica.common.blocks.BlockMineralHalf;
+import metamechanica.common.blocks.world.BlockMineral;
+import metamechanica.common.blocks.world.BlockMineralHalf;
 import metamechanica.common.templates.ItemBase;
 import metamechanica.init.BlockInit;
 import metamechanica.init.SoundInit;

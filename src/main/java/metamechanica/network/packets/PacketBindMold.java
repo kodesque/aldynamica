@@ -5,7 +5,7 @@ import metamechanica.api.ILeavesImprint;
 import metamechanica.api.IDARLattice;
 import metamechanica.capabilities.register.CapabilityAttributeImprint;
 import metamechanica.capabilities.register.CapabilityDARLattice;
-import metamechanica.common.items.ItemAttributeMold;
+import metamechanica.common.items.complex.ItemAttributeMold;
 import metamechanica.root.Main;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;

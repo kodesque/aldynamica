@@ -1,13 +1,15 @@
 package metamechanica.events.back;
 
 import metamechanica.api.ILeavesImprint;
+import metamechanica.capabilities.providers.AnimadversionProvider;
 import metamechanica.capabilities.providers.AttributeImprintProvider;
 import metamechanica.capabilities.providers.DARLatticeProvider;
 import metamechanica.capabilities.providers.DARStorageProvider;
+import metamechanica.capabilities.register.CapabilityAnimadversion;
 import metamechanica.capabilities.register.CapabilityAttributeImprint;
 import metamechanica.capabilities.register.CapabilityDARLattice;
 import metamechanica.capabilities.register.CapabilityDARStorage;
-import metamechanica.common.items.ItemAttributeMold;
+import metamechanica.common.items.complex.ItemAttributeMold;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -25,6 +27,7 @@ public class AttachmentEvents {
 
             event.addCapability(CapabilityDARStorage.KEY, new DARStorageProvider());
             event.addCapability(CapabilityDARLattice.KEY, new DARLatticeProvider());
+            event.addCapability(CapabilityAnimadversion.KEY, new AnimadversionProvider());
         }
     }
 

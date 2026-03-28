@@ -1,4 +1,4 @@
-package metamechanica.common.items;
+package metamechanica.common.items.tools;
 
 import java.util.List;
 

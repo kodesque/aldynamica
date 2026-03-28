@@ -9,7 +9,9 @@ import metamechanica.root.Main;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -22,23 +24,35 @@ public class ItemTinyHasher extends ItemTinyBase {
     public static String name = "hasher";
 
     public static String key_resource = "resource";
-    public static String key_resource_max = "resource_max";
-
     public static String key_progress = "progress";
-    public static String key_progress_max = "progress_max";
 
     public static int resource_max = 100;
     public static int progress_max = 2400;
-
-    //make an enum to accumulate all of this
 
     TextComponentTranslation resource = new TextComponentTranslation("tooltip." + Main.MODID + "." + name + ".resource");
     TextComponentTranslation charge = new TextComponentTranslation("tooltip." + Main.MODID + "." + name + ".charge");
     TextComponentTranslation progress = new TextComponentTranslation("tooltip." + Main.MODID + "." + name + ".progress");
 
-    //resource 1/100
+    public static Item[] variant = {
+            Items.PORKCHOP,
+            Items.BEEF,
+            Items.MUTTON,
+            Items.CHICKEN,
+            Items.RABBIT,
+            Items.FISH,
+
+            Items.ROTTEN_FLESH,
+            Items.SPIDER_EYE,
+            Items.BONE,
+            Items.STRING,
+
+            Item.getItemFromBlock(Blocks.WOOL),
+            Items.LEATHER,
+            Items.RABBIT_HIDE,
+            Items.RABBIT_FOOT
+    };
+
     //charge from capability
-    //progress 2 minutes (2400 ticks)
     //items of various "quality" should give various amount of resource
 
     //progress should be a capability and not an nbt tag
@@ -57,11 +71,12 @@ public class ItemTinyHasher extends ItemTinyBase {
         NBTTagCompound nbt = stack.getSubCompound(Main.MODID);
 
         if (stack.hasCapability(CapabilityDARStorage.CAP, null) && nbt != null) {
-            tooltip.add(this.resource.getFormattedText() + " " + nbt.getInteger(key_resource) + "/" + nbt.getInteger(key_resource_max));
-            tooltip.add(this.progress.getFormattedText() + " " + nbt.getInteger(key_progress) + "/" + nbt.getInteger(key_progress_max));
-            tooltip.add(this.charge.getFormattedText() + " " + stack.getCapability(CapabilityDARStorage.CAP, null).getAmount());
+            tooltip.add(this.resource.getFormattedText() + " " + nbt.getInteger(key_resource) + "/" + resource_max);
+            tooltip.add(this.progress.getFormattedText() + " " + nbt.getInteger(key_progress) + "/" + progress_max);
+            tooltip.add(this.charge.getFormattedText() + " " + stack.getCapability(CapabilityDARStorage.CAP, null).getAmount() + " DAR");
         }
 
+        //TODO: holds shift, components, holds alt, upgrades
 
     }
 
@@ -75,9 +90,9 @@ public class ItemTinyHasher extends ItemTinyBase {
             EntityPlayer player = (EntityPlayer)entityIn;
 
             if (nbt != null) {
-                if (nbt.getInteger(key_resource) == nbt.getInteger(key_resource_max) && nbt.getInteger(key_progress) != nbt.getInteger(key_progress_max)) {
-                    nbt.setInteger(key_progress, Math.max(nbt.getInteger(key_progress) + 1, nbt.getInteger(key_progress_max)));
-                } else if (nbt.getInteger(key_progress) == nbt.getInteger(key_progress_max)) {
+                if (nbt.getInteger(key_resource) == resource_max && nbt.getInteger(key_progress) != progress_max) {
+                    nbt.setInteger(key_progress, Math.max(nbt.getInteger(key_progress) + 1, progress_max));
+                } else if (nbt.getInteger(key_progress) == progress_max) {
                     nbt.setInteger(key_resource, 0);
                     nbt.setInteger(key_progress, 0);
 

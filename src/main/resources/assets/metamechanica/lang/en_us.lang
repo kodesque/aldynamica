@@ -39,13 +39,22 @@ tooltip.metamechanica.properties.lightness=Lightness:
 tooltip.metamechanica.properties.stiffness=Hardness:
 tooltip.metamechanica.properties.hardness=Stiffness:
 
+tooltip.metamechanica.decree_fortitude.inactive=§7Bind with §5[Shift + RMB] §7while in hand
+
 tooltip.metamechanica.soldering_crowbar.description=§7§oRepairs anvils, attunes machines and crushes bones
 tooltip.metamechanica.clawlike_wedge.description=§7§oOpens underground deposits
 
-tooltip.metamechanica.record_found.description.main=§6This music can stir up even the inanimate!
-tooltip.metamechanica.record_found.description.sub=§7§oWorks on the following:
+tooltip.metamechanica.record_found.description.main=§6§oThis music can stir up even the inanimate!
+tooltip.metamechanica.record_found.description.sub=§7Works on the following:
 
 #INTERACTIONS
 
-event.metamechanica.record_found.use=It's too thick to fit in the jukebox. Maybe I can spin it by hitting with some hard rock?
-event.metamechanica.record_found.fail=Sparks fly from the record, but nothing seems to happen. Maybe I missed something?
+scene.metamechanica.record_found.fail=Record slips out of the jukebox. Maybe I missed something?
+
+scene.metamechanica.animadversion.receive.goal.0=You feel a subtle change in the way the air swirls around you.
+event.metamechanica.animadversion.receive.goal.1=You feel a subtle change in the way the sunlight passes through the leaves.
+event.metamechanica.animadversion.receive.goal.2=You feel a subtle change in the way dust settles on the items in your inventory.
+
+scene.metamechanica.animadversion.receive.challenge.0=A tiny hole had been gnawed into the wall. Just for a moment, but you saw these subtle streams of data, the underbelly of the world. And by the time the signal from your eyes reached your brain, the window was already tightly closed. It's on the tip of your tongue...
+scene.metamechanica.animadversion.receive.challenge.1=For a brief moment, you thought your tired head had collected together what it had been processing in the background since you first entered the world. However, the feeling disappeared as soon as you gave it a name.
+scene.metamechanica.animadversion.receive.challenge.2=Something in the endlessly branching cave systems stirs, resisting. Plaster crumbles from the blue vault. The winch that moves the sun is hopelessly outdated and completely worn out.

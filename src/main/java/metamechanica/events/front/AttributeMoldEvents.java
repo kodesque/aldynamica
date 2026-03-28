@@ -7,7 +7,7 @@ import org.lwjgl.input.Mouse;
 import metamechanica.api.IAttributeImprint;
 import metamechanica.api.ILeavesImprint;
 import metamechanica.capabilities.register.CapabilityAttributeImprint;
-import metamechanica.common.items.ItemAttributeMold;
+import metamechanica.common.items.complex.ItemAttributeMold;
 import metamechanica.network.Network;
 import metamechanica.network.packets.PacketBindMold;
 import metamechanica.root.Main;

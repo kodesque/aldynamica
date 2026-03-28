@@ -1,4 +1,4 @@
-package metamechanica.common.items;
+package metamechanica.common.items.complex;
 
 import java.awt.Event;
 import java.lang.reflect.Array;

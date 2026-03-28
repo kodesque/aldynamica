@@ -1,4 +1,4 @@
-package metamechanica.common.items;
+package metamechanica.common.items.tools;
 
 import metamechanica.api.IHasModel;
 import metamechanica.api.ILeavesImprint;

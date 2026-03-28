@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
-import metamechanica.common.blocks.BlockOreTransform;
+import metamechanica.common.blocks.scene.BlockOreTransform;
 import metamechanica.common.entities.EntityBillet;
 import metamechanica.init.BlockInit;
 import metamechanica.init.SoundInit;

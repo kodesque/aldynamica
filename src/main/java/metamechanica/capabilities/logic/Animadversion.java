@@ -1,15 +1,15 @@
 package metamechanica.capabilities.logic;
 
-import metamechanica.api.IDARStorage;
+import metamechanica.api.IAnimadversion;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class DARStorage implements IDARStorage{
+public class Animadversion implements IAnimadversion {
 
     private int amount = 0;
-    public static final String name = "DAR_storage";
+    public static final String name = "animadversion";
 
     public void throwException() {
-        throw new IllegalArgumentException("Received an illegal value while working with storage!");
+        throw new IllegalArgumentException("Received an illegal value while working with anima!");
     }
 
     @Override
