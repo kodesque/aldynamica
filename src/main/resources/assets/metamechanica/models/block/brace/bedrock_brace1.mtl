@@ -1,0 +1,8 @@
+# Made in Blockbench 5.1.1
+newmtl m_036d7fdc-7a97-97b9-3d73-f66bb11c0487
+map_Kd minecraft:blocks/bedrock
+newmtl m_6e015522-5818-3804-8864-aa6d22d0d162
+map_Kd metamechanica:blocks/bedrock_cracked
+newmtl m_13cee411-62ee-8045-5fb1-42dc906bfbf9
+map_Kd metamechanica:blocks/chalcolibanum
+newmtl none

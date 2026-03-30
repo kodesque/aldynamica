@@ -6,10 +6,10 @@ import java.util.List;
 import metamechanica.common.items.complex.ItemAttributeMold;
 import metamechanica.common.items.complex.ItemConductor;
 import metamechanica.common.items.misc.ItemCaviar;
+import metamechanica.common.items.misc.ItemDebug;
 import metamechanica.common.items.scene.ItemRecordFound;
 import metamechanica.common.items.scene.ItemRecordWart;
 import metamechanica.common.items.tools.ItemCrowbar;
-import metamechanica.common.items.tools.ItemDebug;
 import metamechanica.common.items.tools.ItemWedge;
 import metamechanica.common.templates.ItemBase;
 import metamechanica.common.templates.ItemBlockBase;
@@ -38,7 +38,7 @@ public class ItemInit {
     public static final Item GEM_RHINESTONE = new ItemBase("rhinestone");
     public static final Item GEM_GARNET = new ItemBase("garnet");
 
-
+    public static final Item BEDROCK_BRACE = new ItemBlockBase(BlockInit.BEDROCK_BRACE);
 
 
 }

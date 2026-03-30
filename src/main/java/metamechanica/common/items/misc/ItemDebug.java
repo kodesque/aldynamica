@@ -1,4 +1,4 @@
-package metamechanica.common.items.tools;
+package metamechanica.common.items.misc;
 
 import metamechanica.api.IHasModel;
 import metamechanica.api.ILeavesImprint;
@@ -48,11 +48,15 @@ public class ItemDebug extends ItemBase implements ILeavesImprint{
         items.add(new ItemStack (ItemInit.MOLD));
         items.add(new ItemStack (ItemInit.CROWBAR));
         items.add(new ItemStack (ItemInit.WEDGE));
+
         items.add(new ItemStack (ItemInit.RECORD_FOUND));
+        items.add(new ItemStack (ItemInit.RECORD_WART));
 
         items.add(new ItemStack (ItemInit.DEPOSIT_CORUNDUM));
         items.add(new ItemStack (ItemInit.DEPOSIT_GARNET));
         items.add(new ItemStack (ItemInit.DEPOSIT_RHINESTONE));
+
+        items.add(new ItemStack (ItemInit.BEDROCK_BRACE));
 
         items.add(new ItemStack (ItemInit.GEM_CORUNDUM));
         items.add(new ItemStack (ItemInit.GEM_GARNET));

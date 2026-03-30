@@ -1,0 +1,14 @@
+{
+        "forge_marker" : 1,
+        "defaults" : {
+            "model" : "metamechanica:brace/bedrock_brace0.obj",
+            "transform": "forge:default-block"
+        },
+        "variants": {
+          "stage=0": { "model": "metamechanica:brace/bedrock_brace0.obj"},
+          "stage=1": { "model": "metamechanica:brace/bedrock_brace1.obj"},
+          "stage=2":  { "model": "metamechanica:brace/bedrock_brace2.obj"},
+          "stage=3":  { "model": "metamechanica:brace/bedrock_brace3.obj"}
+        }
+    }
+}

@@ -22,6 +22,7 @@ public class EntityBillet extends EntitySlime {
     public void onCollideWithPlayer(EntityPlayer entityIn)
     {
         this.startRiding(entityIn);
+        this.setInvisible(true);
     }
 
     @Override

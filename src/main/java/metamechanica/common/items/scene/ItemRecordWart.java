@@ -1,11 +1,11 @@
 package metamechanica.common.items.scene;
 
+import metamechanica.common.blocks.scene.BlockBedrockBrace;
 import metamechanica.common.templates.ItemBase;
 import metamechanica.init.BlockInit;
-import net.minecraft.block.BlockJukebox;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -27,16 +27,12 @@ public class ItemRecordWart extends ItemBase {
     {
 
         IBlockState state = worldIn.getBlockState(pos);
+        ItemStack stack = player.getHeldItem(hand);
 
-        if (state.getBlock().equals(Blocks.JUKEBOX) && !state.getValue(BlockJukebox.HAS_RECORD) ) {
+        if (state.getBlock().equals(BlockInit.BEDROCK_BRACE) && state.getValue(BlockBedrockBrace.STAGE) == 1 ) {
 
-            worldIn.setBlockState(pos, BlockInit.NERVE_BULB.getDefaultState());
-
-            for (int i = 3; i < pos.getY(); i++) {
-
-                BlockPos lower = new BlockPos(pos.getX() + worldIn.rand.nextInt(1), pos.getY() - i, pos.getZ() + worldIn.rand.nextInt(1));
-
-            }
+            worldIn.setBlockState(pos, BlockInit.BEDROCK_BRACE.getDefaultState().withProperty(BlockBedrockBrace.STAGE, 2));
+            stack.shrink(1);
 
             return EnumActionResult.SUCCESS;
         }

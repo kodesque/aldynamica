@@ -15,10 +15,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockOreTransform extends BlockBase {
 
+    public static String name = "ore_transform";
+
     public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 3);
 
-    public BlockOreTransform(String name, Material materialIn) {
-        super(name, materialIn);
+    public BlockOreTransform(String name) {
+        super(name, Material.IRON);
 
         this.setHardness(3);
         this.setHarvestLevel("pickaxe", 1);

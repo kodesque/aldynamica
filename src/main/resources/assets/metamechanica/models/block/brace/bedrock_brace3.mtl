@@ -1,0 +1,12 @@
+# Made in Blockbench 5.1.1
+newmtl m_036d7fdc-7a97-97b9-3d73-f66bb11c0487
+map_Kd minecraft:blocks/bedrock
+newmtl m_0d24eb5d-c938-e79f-71b0-061fd0781b48
+map_Kd metamechanica:blocks/bedrock_cracked_wart
+newmtl m_a79a6aef-1582-09f5-2f05-a75f3b292fca
+map_Kd metamechanica:blocks/chalcolibanum
+newmtl m_55e87bc1-9170-4aea-78c8-0d88c3bf1da8
+map_Kd minecraft:blocks/nether_wart_block
+newmtl m_ed00973e-468d-2124-1850-ca34e46ee804
+map_Kd metamechanica:blocks/record_big
+newmtl none

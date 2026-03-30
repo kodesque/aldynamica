@@ -6,6 +6,7 @@ import metamechanica.capabilities.register.CapabilityDARLattice;
 import metamechanica.capabilities.register.CapabilityDARStorage;
 import metamechanica.client.render.entity.RenderBillet;
 import metamechanica.common.entities.EntityBillet;
+import metamechanica.events.back.RegistryEvents;
 import metamechanica.init.ItemInit;
 import metamechanica.network.Network;
 import metamechanica.network.proxy.CommonProxy;
@@ -38,6 +39,9 @@ public class Main {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+
+        RegistryEvents.registerEntities();
+
         CapabilityDARStorage.register();
         CapabilityDARLattice.register();
         CapabilityAttributeImprint.register();

@@ -1,14 +1,14 @@
 {
         "forge_marker" : 1,
         "defaults" : {
-            "model" : "metamechanica:ore_transform0",
+            "model" : "metamechanica:transform/ore_transform0.obj",
             "transform": "forge:default-block"
         },
         "variants": {
-          "stage=0": { "model": "metamechanica:event/ore_transform0"},
-          "stage=1": { "model": "metamechanica:event/ore_transform1.obj"},
-          "stage=2":  { "model": "metamechanica:event/ore_transform2.obj"},
-          "stage=3":  { "model": "metamechanica:event/ore_transform3.obj"}
+          "stage=0": { "model": "metamechanica:transform/ore_transform0.obj"},
+          "stage=1": { "model": "metamechanica:transform/ore_transform1.obj"},
+          "stage=2":  { "model": "metamechanica:transform/ore_transform2.obj"},
+          "stage=3":  { "model": "metamechanica:transform/ore_transform3.obj"}
         }
     }
 }

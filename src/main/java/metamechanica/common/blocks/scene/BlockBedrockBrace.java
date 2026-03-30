@@ -14,21 +14,23 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockBedrockTight extends BlockBase {
+public class BlockBedrockBrace extends BlockBase {
 
-    public static final PropertyInteger PHASE = PropertyInteger.create("phase", 0, 2);
+    public static String name = "bedrock_brace";
 
-    public BlockBedrockTight(String name) {
+    public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 3);
+
+    public BlockBedrockBrace(String name) {
         super(name, Material.BARRIER);
         this.setBlockUnbreakable();
 
-        this.setDefaultState(this.blockState.getBaseState().withProperty(PHASE, 0));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(STAGE, 0));
     }
 
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {PHASE});
+        return new BlockStateContainer(this, new IProperty[] {STAGE});
     }
 
     @Override
@@ -58,12 +60,12 @@ public class BlockBedrockTight extends BlockBase {
 
     @Override
     public int getMetaFromState(IBlockState state) {
-        return state.getValue(PHASE);
+        return state.getValue(STAGE);
     }
 
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(PHASE, meta);
+        return this.getDefaultState().withProperty(STAGE, meta);
     }
 
 }
