@@ -1,8 +1,0 @@
-# Made in Blockbench 5.0.7
-newmtl m_93fdaeb8-e35b-a950-8f46-d9a08d4c2d87
-map_Kd metamechanica:blocks/material_rhinestone
-newmtl m_192350a3-1e7f-c6a5-e443-7dae642ee3b9
-map_Kd minecraft:blocks/stone_andesite
-newmtl m_263e350d-689e-64b4-e1d7-029ceadd5c11
-map_Kd metamechanica:blocks/ores/crack_andesite
-newmtl none

@@ -1,8 +1,0 @@
-# Made in Blockbench 5.0.7
-newmtl m_f4c4c967-e937-d3ff-c47f-d19310d9d955
-map_Kd metamechanica:blocks/stone_grain
-newmtl m_7c911e7c-023e-b6f0-626e-68270d9d5eee
-map_Kd minecraft:blocks/stone
-newmtl m_125c0711-18df-e35f-45b4-60a2347b7149
-map_Kd metamechanica:blocks/material_iron_raw
-newmtl none
