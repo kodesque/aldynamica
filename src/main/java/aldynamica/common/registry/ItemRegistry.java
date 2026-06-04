@@ -1,8 +1,8 @@
-package aldynamica.common.register;
+package aldynamica.common.registry;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import aldynamica.api.IHasMeta;
 import aldynamica.common.items.misc.ItemDebug;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -11,21 +11,25 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
-public class ModItems {
+public class ItemRegistry {
 
-    public static List<Item> ITEMS;
+    public static List<Item> ITEMS = new ArrayList<Item>();
 
     public static Item DEBUG;
 
+    public static Item CORPUS;
+
     public static void initItems(IForgeRegistry<Item> iForgeRegistry) {
 
-        iForgeRegistry.register(ModItems.DEBUG = new ItemDebug("debug"));
+        iForgeRegistry.register(ItemRegistry.DEBUG = new ItemDebug("debug"));
+
+        iForgeRegistry.register(ItemRegistry.CORPUS = new ItemDebug("corpus_aldynamica"));
 
     }
 
     @SideOnly(Side.CLIENT)
     public static void initModelsAndVariants() {
-        for (Item item : ModItems.ITEMS) {
+        for (Item item : ItemRegistry.ITEMS) {
             initModelAndVariants(item);
         }
     }

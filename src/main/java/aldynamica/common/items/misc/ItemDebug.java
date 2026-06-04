@@ -1,7 +1,7 @@
 package aldynamica.common.items.misc;
 
 import aldynamica.api.IHasModel;
-import aldynamica.common.templates.ModItemBase;
+import aldynamica.common.templates.ALItemBase;
 import aldynamica.root.Main;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -10,7 +10,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemDebug extends ModItemBase{
+public class ItemDebug extends ALItemBase{
 
     public ItemDebug(String name) {
         super(name);

@@ -1,20 +1,20 @@
 package aldynamica.common.templates;
 
 import aldynamica.api.IHasModel;
-import aldynamica.common.register.ModItems;
+import aldynamica.common.registry.ItemRegistry;
 import aldynamica.root.Main;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 
-public class ModItemBlockBase extends ItemBlock implements IHasModel {
+public class ALItemBlockBase extends ItemBlock implements IHasModel {
 
-    public ModItemBlockBase(Block block) {
+    public ALItemBlockBase(Block block) {
         super(block);
 
         this.setRegistryName(block.getRegistryName());
         this.setTranslationKey(block.getTranslationKey());
 
-        ModItems.ITEMS.add(this);
+        ItemRegistry.ITEMS.add(this);
     }
 
     @Override
