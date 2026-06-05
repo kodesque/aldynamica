@@ -1,9 +1,7 @@
 package aldynamica.events.back;
 
-import aldynamica.api.IHasModel;
 import aldynamica.common.registry.BlockRegistry;
 import aldynamica.common.registry.ItemRegistry;
-import aldynamica.common.registry.SoundInit;
 import aldynamica.common.registry.SoundRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -18,19 +16,23 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class RegistryEvents {
 
     @SubscribeEvent
-    public static void onItemRegister(RegistryEvent.Register<Item> event) {
-
-        ItemRegistry.initItems(event.getRegistry());
-    }
-
-    @SubscribeEvent
-    public static void onBlockRegister(RegistryEvent.Register<Block> event) {
+    public static void onBlockRegister(RegistryEvent.Register<Block> event)
+    {
 
         BlockRegistry.initBlocks(event.getRegistry());
     }
 
     @SubscribeEvent
-    public static void onSoundRegister(RegistryEvent.Register<SoundEvent> event) {
+    public static void onItemRegister(RegistryEvent.Register<Item> event)
+    {
+
+        ItemRegistry.initItems(event.getRegistry());
+        BlockRegistry.initItemBlocks(event.getRegistry());
+    }
+
+    @SubscribeEvent
+    public static void onSoundRegister(RegistryEvent.Register<SoundEvent> event)
+    {
 
         SoundRegistry.initSounds(event.getRegistry());
     }

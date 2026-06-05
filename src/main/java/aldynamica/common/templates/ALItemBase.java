@@ -1,12 +1,11 @@
 package aldynamica.common.templates;
 
-import aldynamica.api.IHasModel;
 import aldynamica.common.registry.ItemRegistry;
 import aldynamica.network.proxy.ClientProxy;
 import aldynamica.root.Main;
 import net.minecraft.item.Item;
 
-public class ALItemBase extends Item implements IHasModel{
+public class ALItemBase extends Item{
 
     public ALItemBase(String name) {
         this.setRegistryName(name);
@@ -15,9 +14,9 @@ public class ALItemBase extends Item implements IHasModel{
         ItemRegistry.ITEMS.add(this);
     }
 
-    @Override
-    public void registerModels() {
-        Main.proxy.registerItemRenderer(this, 0, "inventory");
-    }
+    //    @Override
+    //    public void registerModels() {
+    //        Main.proxy.registerItemRenderer(this, 0, "inventory");
+    //    }
 
 }

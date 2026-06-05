@@ -1,6 +1,5 @@
 package aldynamica.common.items.misc;
 
-import aldynamica.api.IHasModel;
 import aldynamica.common.templates.ALItemBase;
 import aldynamica.root.Main;
 import net.minecraft.creativetab.CreativeTabs;

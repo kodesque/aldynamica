@@ -5,7 +5,7 @@ import aldynamica.root.Main;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
-public class ALBlockBase extends Block{
+public class ALBlockBase extends Block {
 
     public ALBlockBase(String name, Material materialIn) {
         super(materialIn);

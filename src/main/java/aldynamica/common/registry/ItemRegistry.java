@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import aldynamica.common.items.misc.ItemDebug;
+import aldynamica.common.templates.ALItemBase;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
@@ -23,7 +24,7 @@ public class ItemRegistry {
 
         iForgeRegistry.register(ItemRegistry.DEBUG = new ItemDebug("debug"));
 
-        iForgeRegistry.register(ItemRegistry.CORPUS = new ItemDebug("corpus_aldynamica"));
+        iForgeRegistry.register(ItemRegistry.CORPUS = new ALItemBase("corpus_aldynamica"));
 
     }
 

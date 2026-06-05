@@ -1,6 +1,5 @@
 package aldynamica.common.templates;
 
-import aldynamica.common.registry.SoundInit;
 import aldynamica.root.Main;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
