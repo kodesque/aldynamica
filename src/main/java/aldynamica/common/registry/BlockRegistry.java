@@ -17,6 +17,8 @@ public class BlockRegistry {
     public static List<Block> BLOCKS = new ArrayList<Block>();
     public static List<Block> SPECIAL_CASES = new ArrayList<Block>();
 
+    //
+
     public static Block TURBID_TILE;
     public static Block TURBID_TILE_DARK;
     public static Block TURBID_TILE_MOSSY;
