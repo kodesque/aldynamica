@@ -1,8 +1,8 @@
 package aldynamica.events.back;
 
-import aldynamica.common.registry.BlockRegistry;
-import aldynamica.common.registry.ItemRegistry;
-import aldynamica.common.registry.SoundRegistry;
+import aldynamica.common.init.BlockInit;
+import aldynamica.common.init.ItemInit;
+import aldynamica.common.init.SoundInit;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
@@ -19,22 +19,23 @@ public class RegistryEvents {
     public static void onBlockRegister(RegistryEvent.Register<Block> event)
     {
 
-        BlockRegistry.initBlocks(event.getRegistry());
+        BlockInit.initBlocks(event.getRegistry());
+
     }
 
     @SubscribeEvent
     public static void onItemRegister(RegistryEvent.Register<Item> event)
     {
 
-        ItemRegistry.initItems(event.getRegistry());
-        BlockRegistry.initItemBlocks(event.getRegistry());
+        ItemInit.initItems(event.getRegistry());
+        BlockInit.initItemBlocks(event.getRegistry());
     }
 
     @SubscribeEvent
     public static void onSoundRegister(RegistryEvent.Register<SoundEvent> event)
     {
 
-        SoundRegistry.initSounds(event.getRegistry());
+        SoundInit.initSounds(event.getRegistry());
     }
 
 }

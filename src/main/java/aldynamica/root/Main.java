@@ -1,12 +1,19 @@
 package aldynamica.root;
 
-import aldynamica.events.back.RegistryEvents;
+import java.util.HashMap;
+import java.util.Map;
+
+import aldynamica.api.IAldynamicaNative;
+import aldynamica.common.init.ItemInit;
 import aldynamica.network.Network;
 import aldynamica.network.proxy.CommonProxy;
+import aldynamica.util.ExceptionManager;
+import aldynamica.util.ExceptionManager.EnumSource;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -54,6 +61,47 @@ public class Main {
         @SideOnly(Side.CLIENT)
         public ItemStack createIcon() {
             return new ItemStack(Items.DIAMOND);
+        }
+
+        @Override
+        @SideOnly(Side.CLIENT)
+        public void displayAllRelevantItems(NonNullList<ItemStack> list)
+        {
+            super.displayAllRelevantItems(list);
+
+            try {
+
+                Map<Item, Integer> order = new HashMap<>();
+
+                for (int i = 0; i < ItemInit.ITEMS.size(); i++)
+                {
+                    order.put(ItemInit.ITEMS.get(i), i);
+                }
+
+                list.sort((a, b) ->
+                {
+                    IAldynamicaNative A = (IAldynamicaNative)a.getItem();
+                    IAldynamicaNative B = (IAldynamicaNative)b.getItem();
+
+                    int groupCompare = Integer.compare(
+                            A.getGroup().priority(),
+                            B.getGroup().priority()
+                            );
+
+                    if (groupCompare != 0)
+                        return groupCompare;
+
+                    return Integer.compare(
+                            order.get(a.getItem()),
+                            order.get(b.getItem())
+                            );
+                });
+
+            } catch (RuntimeException e) {
+
+                e.printStackTrace();
+
+            }
         }
     };
 }

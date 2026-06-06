@@ -1,9 +1,9 @@
-package aldynamica.common.registry;
+package aldynamica.common.init;
 
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
-public class SoundRegistry {
+public class SoundInit {
 
     public static SoundEvent example;
 

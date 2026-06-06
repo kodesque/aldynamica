@@ -1,9 +1,9 @@
 package aldynamica.common.items.misc;
 
+import aldynamica.api.EnumSortGroup;
 import aldynamica.common.templates.ALItemBase;
 import aldynamica.root.Main;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
@@ -11,8 +11,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemDebug extends ALItemBase{
 
-    public ItemDebug(String name) {
-        super(name);
+    public ItemDebug(String name, EnumSortGroup group) {
+        super(name, group);
     }
 
     @Override

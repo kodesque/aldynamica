@@ -1,6 +1,6 @@
 package aldynamica.common.templates;
 
-import aldynamica.common.registry.ItemRegistry;
+import aldynamica.common.init.ItemInit;
 import aldynamica.root.Main;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
@@ -13,12 +13,8 @@ public class ALItemBlockBase extends ItemBlock {
         this.setRegistryName(block.getRegistryName());
         this.setTranslationKey(block.getTranslationKey());
 
-        ItemRegistry.ITEMS.add(this);
+        this.setCreativeTab(Main.tabMod);
+
+        ItemInit.ITEMS.add(this);
     }
-
-    //    @Override
-    //    public void registerModels() {
-    //        Main.proxy.registerItemRenderer(this, 0, "inventory");
-    //    }
-
 }

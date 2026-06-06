@@ -1,8 +1,9 @@
-package aldynamica.common.registry;
+package aldynamica.common.init;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import aldynamica.api.EnumSortGroup;
 import aldynamica.common.items.misc.ItemDebug;
 import aldynamica.common.templates.ALItemBase;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -12,25 +13,25 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
-public class ItemRegistry {
-
-    public static List<Item> ITEMS = new ArrayList<Item>();
+public class ItemInit {
 
     public static Item DEBUG;
 
     public static Item CORPUS;
 
+    public static List<Item> ITEMS = new ArrayList<Item>();
+
     public static void initItems(IForgeRegistry<Item> iForgeRegistry) {
 
-        iForgeRegistry.register(ItemRegistry.DEBUG = new ItemDebug("debug"));
+        iForgeRegistry.register(ItemInit.DEBUG = new ItemDebug("debug", EnumSortGroup.ITEMS));
 
-        iForgeRegistry.register(ItemRegistry.CORPUS = new ALItemBase("corpus_aldynamica"));
+        iForgeRegistry.register(ItemInit.CORPUS = new ALItemBase("corpus_aldynamica", EnumSortGroup.ITEMS));
 
     }
 
     @SideOnly(Side.CLIENT)
     public static void initModelsAndVariants() {
-        for (Item item : ItemRegistry.ITEMS) {
+        for (Item item : ItemInit.ITEMS) {
             initModelAndVariants(item);
         }
     }
