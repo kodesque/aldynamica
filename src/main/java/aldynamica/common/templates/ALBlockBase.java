@@ -11,13 +11,15 @@ public class ALBlockBase extends Block implements IAldynamicaNative {
 
     private EnumSortGroup type;
 
-    public ALBlockBase(String name, Material materialIn) {
+    public ALBlockBase(String name, Material materialIn, EnumSortGroup group) {
         super(materialIn);
 
         this.setRegistryName(name);
         this.setTranslationKey(Main.MODID + "." + name);
 
         this.setCreativeTab(Main.tabMod);
+
+        this.type = group;
 
         BlockInit.BLOCKS.add(this);
 
@@ -28,10 +30,6 @@ public class ALBlockBase extends Block implements IAldynamicaNative {
     @Override
     public EnumSortGroup getGroup() {
         return this.type;
-    }
-
-    public void setGroup(EnumSortGroup type) {
-        this.type = type;
     }
 
 }

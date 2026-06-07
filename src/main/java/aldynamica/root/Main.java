@@ -8,7 +8,6 @@ import aldynamica.common.init.ItemInit;
 import aldynamica.network.Network;
 import aldynamica.network.proxy.CommonProxy;
 import aldynamica.util.ExceptionManager;
-import aldynamica.util.ExceptionManager.EnumSource;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -29,6 +28,8 @@ public class Main {
     public static final String MODID = "aldynamica";
     public static final String NAME = "Aldynamica";
     public static final String VERSION = "0.0.1-ALPHA";
+
+    public final static String GITHUB = "https://github.com/kodesque/aldynamica";
 
     public static SimpleNetworkWrapper packetHandler;
 
@@ -61,6 +62,13 @@ public class Main {
         @SideOnly(Side.CLIENT)
         public ItemStack createIcon() {
             return new ItemStack(Items.DIAMOND);
+        }
+
+        @Override
+        @SideOnly(Side.CLIENT)
+        public String getTranslationKey()
+        {
+            return Main.MODID + ".creative_tab." + "name";
         }
 
         @Override

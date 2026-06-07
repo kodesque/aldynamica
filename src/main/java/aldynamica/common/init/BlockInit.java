@@ -3,6 +3,8 @@ package aldynamica.common.init;
 import java.util.ArrayList;
 import java.util.List;
 
+import aldynamica.api.EnumSortGroup;
+import aldynamica.api.IAldynamicaNative;
 import aldynamica.api.IBlockSpecial;
 import aldynamica.common.templates.ALBlockBase;
 import aldynamica.common.templates.ALItemBlockBase;
@@ -37,25 +39,29 @@ public class BlockInit {
 
     public static void initBlocks(IForgeRegistry<Block> iForgeRegistry) {
 
-        iForgeRegistry.register(BlockInit.TURBID_TILE = new ALBlockBase("turbid_tile", Material.ROCK));
-        iForgeRegistry.register(BlockInit.TURBID_TILE_DARK = new ALBlockBase("turbid_tile_dark", Material.ROCK));
-        iForgeRegistry.register(BlockInit.TURBID_TILE_MOSSY = new ALBlockBase("turbid_tile_mossy", Material.ROCK));
+        iForgeRegistry.register(BlockInit.TURBID_TILE = new ALBlockBase("turbid_tile", Material.ROCK, EnumSortGroup.WORLDGEN));
+        iForgeRegistry.register(BlockInit.TURBID_TILE_DARK = new ALBlockBase("turbid_tile_dark", Material.ROCK, EnumSortGroup.WORLDGEN));
+        iForgeRegistry.register(BlockInit.TURBID_TILE_MOSSY = new ALBlockBase("turbid_tile_mossy", Material.ROCK, EnumSortGroup.WORLDGEN));
 
-        iForgeRegistry.register(BlockInit.TURBID_BRICKS = new ALBlockBase("turbid_bricks", Material.ROCK));
-        iForgeRegistry.register(BlockInit.TURBID_GLOWTILE = new ALBlockBase("turbid_glowtile", Material.GLASS));
+        iForgeRegistry.register(BlockInit.TURBID_BRICKS = new ALBlockBase("turbid_bricks", Material.ROCK, EnumSortGroup.WORLDGEN));
+        iForgeRegistry.register(BlockInit.TURBID_GLOWTILE = new ALBlockBase("turbid_glowtile", Material.GLASS, EnumSortGroup.WORLDGEN));
 
-        iForgeRegistry.register(BlockInit.TURBID_SLAB = new ALBlockBase("turbid_slab", Material.ROCK));
-        iForgeRegistry.register(BlockInit.TURBID_WALL = new ALBlockBase("turbid_wall", Material.ROCK));
-        iForgeRegistry.register(BlockInit.TURBID_STAIRS = new ALBlockBase("turbid_stairs", Material.ROCK));
+        iForgeRegistry.register(BlockInit.TURBID_SLAB = new ALBlockBase("turbid_slab", Material.ROCK, EnumSortGroup.WORLDGEN));
+        iForgeRegistry.register(BlockInit.TURBID_WALL = new ALBlockBase("turbid_wall", Material.ROCK, EnumSortGroup.WORLDGEN));
+        iForgeRegistry.register(BlockInit.TURBID_STAIRS = new ALBlockBase("turbid_stairs", Material.ROCK, EnumSortGroup.WORLDGEN));
 
-        iForgeRegistry.register(BlockInit.OCHER_BONE = new ALBlockBase("ocher_bone", Material.SAND));
+        iForgeRegistry.register(BlockInit.OCHER_BONE = new ALBlockBase("ocher_bone", Material.SAND, EnumSortGroup.WORLDGEN));
 
-        iForgeRegistry.register(BlockInit.PEAT_RAW = new ALBlockBase("peat_raw", Material.CLAY));
-        iForgeRegistry.register(BlockInit.PEAT_MOSSY = new ALBlockBase("peat_mossy", Material.CLAY));
+        iForgeRegistry.register(BlockInit.PEAT_RAW = new ALBlockBase("peat_raw", Material.CLAY, EnumSortGroup.WORLDGEN));
+        iForgeRegistry.register(BlockInit.PEAT_MOSSY = new ALBlockBase("peat_mossy", Material.CLAY, EnumSortGroup.WORLDGEN));
 
-        iForgeRegistry.register(BlockInit.SILT = new ALBlockBase("silt", Material.CLAY));
-        iForgeRegistry.register(BlockInit.SWAMP_REED = new ALBlockBase("swamp_reed", Material.PLANTS));
+        iForgeRegistry.register(BlockInit.SILT = new ALBlockBase("silt", Material.CLAY, EnumSortGroup.WORLDGEN));
+        iForgeRegistry.register(BlockInit.SWAMP_REED = new ALBlockBase("swamp_reed", Material.PLANTS, EnumSortGroup.WORLDGEN));
 
+    }
+
+    public static void initBlocksRemap() {
+        //        RemappingManager.BLOCK_REMAPS.put();
     }
 
     public static void initItemBlocks(IForgeRegistry<Item> iForgeRegistry) {
@@ -64,7 +70,7 @@ public class BlockInit {
             if (element instanceof IBlockSpecial) {
                 iForgeRegistry.register(((IBlockSpecial)element).getItemBlockSpecial());
             } else {
-                ALItemBlockBase itemblock = new ALItemBlockBase(element);
+                ALItemBlockBase itemblock = new ALItemBlockBase(element, ((IAldynamicaNative)element).getGroup());
                 iForgeRegistry.register(itemblock);
                 Main.proxy.registerItemBlockRenderer(itemblock);
             }

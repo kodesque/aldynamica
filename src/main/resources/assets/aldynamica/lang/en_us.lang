@@ -1,2 +1,27 @@
 #CREATIVE TAB
-itemGroup.tabAldynamica=I'm Aldynamica!
+aldynamica.creative_tab.name=I'm Aldynamica!
+
+#EXCEPTIONS
+aldynamica.exception.light.text=A predictable error has been caught. There may be a minor logic issue.
+
+aldynamica.exception.middle.text=A partially predictable error has been caught. There may be a moderate logic issue.
+
+aldynamica.exception.severe.text=A completely unpredictable error has been caught. There may be a major logic issue.
+
+aldynamica.exception.non_rollback.text=Preventing a game crash without interfering with gameplay.
+
+aldynamica.exception.rollback.text=Preventing a game crash required interfering with gameplay.
+
+aldynamica.exception.report.text=Please report this to the mod author.
+
+aldynamica.exception.cause.text=Possible causes of the exception:
+
+aldynamica.predictable.creative_sort.text=sorting items in the creative tab
+
+aldynamica.context.player=Player:
+aldynamica.context.item=Item:
+aldynamica.context.block=Block:
+aldynamica.context.tile=Tile:
+aldynamica.context.entity=Entity:
+aldynamica.context.world=World:
+aldynamica.context.position=Position:

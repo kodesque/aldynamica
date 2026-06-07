@@ -4,7 +4,7 @@ import aldynamica.api.EnumSortGroup;
 import aldynamica.api.IAldynamicaNative;
 import aldynamica.common.init.ItemInit;
 import aldynamica.root.Main;
-import aldynamica.util.EventWrapper;
+import aldynamica.util.ContextWrapper;
 import aldynamica.util.ExceptionManager.ContextBuilder;
 import aldynamica.util.ExceptionManager.ExceptionContext;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,9 +21,10 @@ public class ALItemBase extends Item implements IAldynamicaNative {
 
     private EnumSortGroup type;
 
-    public ALItemBase(String name, EnumSortGroup type) {
+    public ALItemBase(String name, EnumSortGroup group) {
         this.setRegistryName(name);
         this.setTranslationKey(Main.MODID + "." + name);
+        this.type = group;
 
         this.setCreativeTab(Main.tabMod);
 
@@ -35,30 +36,63 @@ public class ALItemBase extends Item implements IAldynamicaNative {
         return this.type;
     }
 
-    public void setGroup(EnumSortGroup type) {
-        this.type = type;
-    }
-
     //wrap start
 
     @Override
-    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+    public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
 
-        return this.useActual(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+        ExceptionContext context = new ContextBuilder()
+                .addPlayer(player)
+                .addWorld(world)
+                .addPos(pos)
+                .build();
+
+        return ContextWrapper.runMethod(
+                context,
+                () -> this.onItemUseActual(
+                        player,
+                        world,
+                        pos,
+                        hand,
+                        facing,
+                        hitX,
+                        hitY,
+                        hitZ
+                        ),
+                EnumActionResult.FAIL
+                );
     }
 
-    public EnumActionResult useActual(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+    public EnumActionResult onItemUseActual(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+
         return EnumActionResult.PASS;
+
     }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
-        return this.onItemRightClickActual(worldIn, playerIn, handIn);
+
+        ExceptionContext context = new ContextBuilder()
+                .addPlayer(playerIn)
+                .addWorld(worldIn)
+                .build();
+
+        return ContextWrapper.runMethod(
+                context,
+                () -> this.onItemRightClickActual(
+                        worldIn,
+                        playerIn,
+                        handIn
+                        ),
+                new ActionResult<ItemStack>(EnumActionResult.FAIL, playerIn.getHeldItem(handIn))
+                );
     }
 
     public ActionResult<ItemStack> onItemRightClickActual(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
+
+
         return new ActionResult<ItemStack>(EnumActionResult.PASS, playerIn.getHeldItem(handIn));
     }
 

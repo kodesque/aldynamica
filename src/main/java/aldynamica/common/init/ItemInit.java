@@ -6,6 +6,7 @@ import java.util.List;
 import aldynamica.api.EnumSortGroup;
 import aldynamica.common.items.misc.ItemDebug;
 import aldynamica.common.templates.ALItemBase;
+import aldynamica.util.RemappingHashes;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
@@ -23,10 +24,13 @@ public class ItemInit {
 
     public static void initItems(IForgeRegistry<Item> iForgeRegistry) {
 
-        iForgeRegistry.register(ItemInit.DEBUG = new ItemDebug("debug", EnumSortGroup.ITEMS));
+        iForgeRegistry.register(ItemInit.DEBUG = new ItemDebug("debug"));
 
         iForgeRegistry.register(ItemInit.CORPUS = new ALItemBase("corpus_aldynamica", EnumSortGroup.ITEMS));
+    }
 
+    public static void initItemsRemap() {
+        //        RemappingManager.ITEM_REMAPS.put();
     }
 
     @SideOnly(Side.CLIENT)

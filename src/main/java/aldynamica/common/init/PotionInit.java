@@ -14,4 +14,8 @@ public class PotionInit {
 
     }
 
+    public static void initPotionsRemap() {
+        //        RemappingManager.BLOCK_REMAPS.put();
+    }
+
 }

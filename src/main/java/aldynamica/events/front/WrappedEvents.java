@@ -2,7 +2,7 @@ package aldynamica.events.front;
 
 import aldynamica.util.ExceptionManager.ContextBuilder;
 import aldynamica.util.ExceptionManager.ExceptionContext;
-import aldynamica.util.EventWrapper;
+import aldynamica.util.ContextWrapper;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -18,7 +18,7 @@ public class WrappedEvents {
                 .addStack(event.getEntityPlayer().getHeldItemMainhand())
                 .build();
 
-        EventWrapper.runEvent(event, this::onInteractActual, context);
+        ContextWrapper.runEvent(event, this::onInteractActual, context);
     }
 
     private void onInteractActual(PlayerInteractEvent.RightClickItem event) {
