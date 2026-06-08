@@ -4,6 +4,7 @@ import aldynamica.api.EnumSortGroup;
 import aldynamica.api.IAldynamicaNative;
 import aldynamica.common.init.BlockInit;
 import aldynamica.root.Main;
+import aldynamica.util.T9n;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
@@ -15,7 +16,7 @@ public class ALBlockBase extends Block implements IAldynamicaNative {
         super(materialIn);
 
         this.setRegistryName(name);
-        this.setTranslationKey(Main.MODID + "." + name);
+        this.setTranslationKey(T9n.simpleKey(name));
 
         this.setCreativeTab(Main.tabMod);
 

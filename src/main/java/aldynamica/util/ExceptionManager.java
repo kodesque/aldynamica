@@ -3,9 +3,9 @@ package aldynamica.util;
 import java.util.ArrayList;
 
 import aldynamica.root.Main;
-import aldynamica.util.TranslationManager.EnumGroups;
-import aldynamica.util.TranslationManager.EnumGroups.Context;
-import aldynamica.util.TranslationManager.ILocGroupValues;
+import aldynamica.util.T9n.EnumGroups;
+import aldynamica.util.T9n.EnumGroups.Context;
+import aldynamica.util.T9n.ILocGroupValues;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -36,13 +36,13 @@ public class ExceptionManager {
                 return ExceptionManager.getSpecial(this.source);
 
             String string = new StringBuilder()
-                    .append(TranslationManager.getLoc(EnumGroups.CONTEXT, Context.PLAYER) +  (this.player != null ? this.player.getName() : ""))
-                    .append(TranslationManager.getLoc(EnumGroups.CONTEXT, Context.ITEM) + (this.stack != null ? this.stack.getDisplayName() : ""))
-                    .append(TranslationManager.getLoc(EnumGroups.CONTEXT, Context.BLOCK) + (this.state != null ? this.state.getBlock() : ""))
-                    .append(TranslationManager.getLoc(EnumGroups.CONTEXT, Context.TILE) + (this.tile != null ? this.tile.getDisplayName() : ""))
-                    .append(TranslationManager.getLoc(EnumGroups.CONTEXT, Context.ENTITY) + (this.entity != null ? this.entity.getName() : ""))
-                    .append(TranslationManager.getLoc(EnumGroups.CONTEXT, Context.WORLD) + (this.world != null ? this.world.getProviderName() : ""))
-                    .append(TranslationManager.getLoc(EnumGroups.CONTEXT, Context.POSITION) + (this.pos != null ? this.pos : ""))
+                    .append(T9n.getLoc(EnumGroups.CONTEXT, Context.PLAYER) +  (this.player != null ? this.player.getName() : ""))
+                    .append(T9n.getLoc(EnumGroups.CONTEXT, Context.ITEM) + (this.stack != null ? this.stack.getDisplayName() : ""))
+                    .append(T9n.getLoc(EnumGroups.CONTEXT, Context.BLOCK) + (this.state != null ? this.state.getBlock() : ""))
+                    .append(T9n.getLoc(EnumGroups.CONTEXT, Context.TILE) + (this.tile != null ? this.tile.getDisplayName() : ""))
+                    .append(T9n.getLoc(EnumGroups.CONTEXT, Context.ENTITY) + (this.entity != null ? this.entity.getName() : ""))
+                    .append(T9n.getLoc(EnumGroups.CONTEXT, Context.WORLD) + (this.world != null ? this.world.getProviderName() : ""))
+                    .append(T9n.getLoc(EnumGroups.CONTEXT, Context.POSITION) + (this.pos != null ? this.pos : ""))
                     .toString();
 
             return string;
@@ -137,9 +137,9 @@ public class ExceptionManager {
         String report = new StringBuilder()
                 .append(Main.MODID + ":")
                 .append(severity)
-                .append(TranslationManager.getLoc(EnumGroups.EXCEPTION, EnumGroups.Exception.CAUSE))
+                .append(T9n.getLoc(EnumGroups.EXCEPTION, EnumGroups.Exception.CAUSE))
                 .append(ctx.getAllCauses())
-                .append(TranslationManager.getLoc(EnumGroups.EXCEPTION, EnumGroups.Exception.REPORT))
+                .append(T9n.getLoc(EnumGroups.EXCEPTION, EnumGroups.Exception.REPORT))
                 .append(Main.GITHUB)
                 .toString();
 
@@ -170,7 +170,8 @@ public class ExceptionManager {
 
     public enum EnumSpecial {
         REMAPPING("Found a missing ID without any possible replacement."),
-        SORTING("Caught an exception while sorting items in the creative tab.");
+        SORTING("Caught an exception while sorting items in the creative tab."),
+        REFRESHING("Tried to refresh the localization file in a non-development environment.");
 
         private String message;
 

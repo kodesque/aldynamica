@@ -8,6 +8,10 @@ import aldynamica.common.init.ItemInit;
 import aldynamica.network.Network;
 import aldynamica.network.proxy.CommonProxy;
 import aldynamica.util.ExceptionManager;
+import aldynamica.util.ExceptionManager.ContextBuilder;
+import aldynamica.util.ExceptionManager.EnumSpecial;
+import aldynamica.util.ExceptionManager.ExceptionContext;
+import aldynamica.util.T9n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -68,7 +72,7 @@ public class Main {
         @SideOnly(Side.CLIENT)
         public String getTranslationKey()
         {
-            return Main.MODID + ".creative_tab." + "name";
+            return T9n.simpleKey("creative_tab" + ":" + "name");
         }
 
         @Override
@@ -107,7 +111,11 @@ public class Main {
 
             } catch (RuntimeException e) {
 
-                e.printStackTrace();
+                ExceptionContext ctx = new ContextBuilder()
+                        .addSource(EnumSpecial.SORTING)
+                        .build();
+
+                ExceptionManager.handle(e, ctx);
 
             }
         }

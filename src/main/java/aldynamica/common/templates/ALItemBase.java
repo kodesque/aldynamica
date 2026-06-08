@@ -1,10 +1,12 @@
 package aldynamica.common.templates;
 
+import aldynamica.api.EnumKeyOrder;
 import aldynamica.api.EnumSortGroup;
 import aldynamica.api.IAldynamicaNative;
 import aldynamica.common.init.ItemInit;
 import aldynamica.root.Main;
 import aldynamica.util.ContextWrapper;
+import aldynamica.util.T9n;
 import aldynamica.util.ExceptionManager.ContextBuilder;
 import aldynamica.util.ExceptionManager.ExceptionContext;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,7 +25,7 @@ public class ALItemBase extends Item implements IAldynamicaNative {
 
     public ALItemBase(String name, EnumSortGroup group) {
         this.setRegistryName(name);
-        this.setTranslationKey(Main.MODID + "." + name);
+        this.setTranslationKey(T9n.simpleKey(name, EnumKeyOrder.ITEMS));
         this.type = group;
 
         this.setCreativeTab(Main.tabMod);
