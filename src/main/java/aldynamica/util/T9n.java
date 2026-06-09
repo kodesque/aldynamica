@@ -9,7 +9,7 @@ import java.util.List;
 
 import com.google.common.io.Files;
 
-import aldynamica.api.EnumKeyOrder;
+import aldynamica.api.EnumLangSection;
 import aldynamica.root.Main;
 import aldynamica.util.ExceptionManager.ContextBuilder;
 import aldynamica.util.ExceptionManager.EnumSpecial;
@@ -106,12 +106,22 @@ public class T9n {
         }
     }
 
-    public static String simpleKey(String name, EnumKeyOrder order) {
+    public static String simpleKey(String name, EnumLangSection section) {
 
         TextComponentTranslation comp = new TextComponentTranslation(Main.MODID + "." + name);
 
-        if (!I18n.hasKey(comp.getKey())) {
-            refreshFile(comp.getKey());
+        String fullkey = null;
+
+        switch (section) {
+            case CREATIVE_TAB: fullkey = "tab." + name;
+            case BLOCKS: fullkey = "tile." + name;
+            case ITEMS: fullkey = "item." + name;
+        }
+
+        fullkey = fullkey + ".name";
+
+        if (!I18n.hasKey(fullkey)) {
+            refreshFile(fullkey, section.getName());
         }
 
         return comp.getFormattedText();
@@ -119,10 +129,10 @@ public class T9n {
 
     public static TextComponentTranslation getComp(EnumGroups group, ILocGroupValues type) {
 
-        TextComponentTranslation comp = new TextComponentTranslation(Main.MODID + "." + group.getKey() + "." + type.getKey() + "." + group.getSuffix());
+        TextComponentTranslation comp = new TextComponentTranslation(group.getKey() + "." + Main.MODID + "." + type.getKey() + "." + group.getSuffix());
 
         if (!I18n.hasKey(comp.getKey())) {
-            refreshFile(comp.getKey());
+            refreshFile(comp.getKey(), group.getKey().toUpperCase());
         }
 
         return comp;
@@ -130,24 +140,16 @@ public class T9n {
 
     public static String getLoc(EnumGroups group, ILocGroupValues type) {
 
-        TextComponentTranslation comp = new TextComponentTranslation(Main.MODID + "." + group.getKey() + "." + type.getKey() + "." + group.getSuffix());
+        TextComponentTranslation comp = new TextComponentTranslation(group.getKey() + "." + Main.MODID + "." + type.getKey() + "." + group.getSuffix());
 
         if (!I18n.hasKey(comp.getKey())) {
-            refreshFile(comp.getKey());
+            refreshFile(comp.getKey(), group.getKey().toUpperCase());
         }
 
         return comp.getKey();
     }
 
-    public static void refreshFile(String keyToAdd) {
-
-        //analyze string and find out to which section it belongs
-
-        for (int i = 0; i < EnumKeyOrder.values().length; i++) {
-            if (keyToAdd.contains(EnumKeyOrder.values()[i].getName())) {
-
-            }
-        }
+    public static void refreshFile(String fullkey, String section) {
 
         File[] files = LANG.toFile().listFiles();
 
@@ -158,11 +160,11 @@ public class T9n {
 
             try {
 
-                List<String> lines = Files.readLines(file.toPath(), StandardCharsets.UTF_8);
+                List<String> lines = Files.readLines(file, StandardCharsets.UTF_8);
 
-                String header = "#" + section.getName();
+                String header = "#" + section;
 
-                int start = -1;
+                Integer start = null;
 
                 for (int i = 0; i < lines.size(); i++) {
                     if (lines.get(i).trim().equalsIgnoreCase(header)) {
@@ -171,7 +173,7 @@ public class T9n {
                     }
                 }
 
-                if (start == -1)
+                if (start == null)
                     return;
 
                 int end = lines.size();
@@ -183,7 +185,7 @@ public class T9n {
                     }
                 }
 
-                int insertIndex = -1;
+                Integer insertIndex = null;
 
                 for (int i = start + 1; i < end; i++) {
                     if (lines.get(i).trim().isEmpty()) {
@@ -192,13 +194,15 @@ public class T9n {
                     }
                 }
 
-                if (insertIndex == -1) {
+                if (insertIndex == null) {
                     insertIndex = end;
                 }
 
-                lines.add(insertIndex, keyToAdd + "=");
+                lines.add(insertIndex, fullkey + "=");
 
-                Files.write(file.toPath(), lines, StandardCharsets.UTF_8);
+                String content = String.join(System.lineSeparator(), lines);
+
+                Files.write(content, file, StandardCharsets.UTF_8);
 
             } catch (IOException e) {
 

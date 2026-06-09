@@ -1,5 +1,6 @@
 package aldynamica.common.templates;
 
+import aldynamica.api.EnumLangSection;
 import aldynamica.api.EnumSortGroup;
 import aldynamica.api.IAldynamicaNative;
 import aldynamica.common.init.BlockInit;
@@ -16,7 +17,7 @@ public class ALBlockBase extends Block implements IAldynamicaNative {
         super(materialIn);
 
         this.setRegistryName(name);
-        this.setTranslationKey(T9n.simpleKey(name));
+        this.setTranslationKey(T9n.simpleKey(name, EnumLangSection.BLOCKS));
 
         this.setCreativeTab(Main.tabMod);
 

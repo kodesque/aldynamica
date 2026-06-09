@@ -3,6 +3,7 @@ package aldynamica.root;
 import java.util.HashMap;
 import java.util.Map;
 
+import aldynamica.api.EnumLangSection;
 import aldynamica.api.IAldynamicaNative;
 import aldynamica.common.init.ItemInit;
 import aldynamica.network.Network;
@@ -72,7 +73,7 @@ public class Main {
         @SideOnly(Side.CLIENT)
         public String getTranslationKey()
         {
-            return T9n.simpleKey("creative_tab" + ":" + "name");
+            return T9n.simpleKey(Main.MODID, EnumLangSection.CREATIVE_TAB);
         }
 
         @Override

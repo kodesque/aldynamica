@@ -1,6 +1,6 @@
 package aldynamica.common.templates;
 
-import aldynamica.api.EnumKeyOrder;
+import aldynamica.api.EnumLangSection;
 import aldynamica.api.EnumSortGroup;
 import aldynamica.api.IAldynamicaNative;
 import aldynamica.common.init.ItemInit;
@@ -25,7 +25,7 @@ public class ALItemBase extends Item implements IAldynamicaNative {
 
     public ALItemBase(String name, EnumSortGroup group) {
         this.setRegistryName(name);
-        this.setTranslationKey(T9n.simpleKey(name, EnumKeyOrder.ITEMS));
+        this.setTranslationKey(T9n.simpleKey(name, EnumLangSection.ITEMS));
         this.type = group;
 
         this.setCreativeTab(Main.tabMod);

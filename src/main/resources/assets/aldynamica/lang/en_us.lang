@@ -1,27 +1,26 @@
+# If you are contributing to translation of this mod, please note the following:
+# the '#' here are actually important. They are used as section markers by some of the 
+# methods to automatically add missing localization keys. Replacing them with something else
+# will break the logic. Simply put, stick to the following structure:
+# '# SOMETHING (translated something)'
+
 #CREATIVE TAB
-aldynamica.creative_tab.name=I'm Aldynamica!
+tab.aldynamica.name=I'm Aldynamica!
 
 #EXCEPTIONS
-aldynamica.exception.light.text=A predictable error has been caught. There may be a minor logic issue.
+exception.aldynamica.light.text=A predictable error has been caught. There may be a minor logic issue.
+exception.aldynamica.middle.text=A partially predictable error has been caught. There may be a moderate logic issue.
+exception.aldynamica.severe.text=A completely unpredictable error has been caught. There may be a major logic issue.
+exception.aldynamica.non_rollback.text=Preventing a game crash without interfering with gameplay.
+exception.aldynamica.rollback.text=Preventing a game crash required interfering with gameplay.
+exception.aldynamica.report.text=Please report this to the mod author.
+exception.aldynamica.cause.text=Possible causes of the exception:
 
-aldynamica.exception.middle.text=A partially predictable error has been caught. There may be a moderate logic issue.
-
-aldynamica.exception.severe.text=A completely unpredictable error has been caught. There may be a major logic issue.
-
-aldynamica.exception.non_rollback.text=Preventing a game crash without interfering with gameplay.
-
-aldynamica.exception.rollback.text=Preventing a game crash required interfering with gameplay.
-
-aldynamica.exception.report.text=Please report this to the mod author.
-
-aldynamica.exception.cause.text=Possible causes of the exception:
-
-aldynamica.predictable.creative_sort.text=sorting items in the creative tab
-
-aldynamica.context.player=Player:
-aldynamica.context.item=Item:
-aldynamica.context.block=Block:
-aldynamica.context.tile=Tile:
-aldynamica.context.entity=Entity:
-aldynamica.context.world=World:
-aldynamica.context.position=Position:
+#CONTEXT
+context.aldynamica.player.text=Player:
+context.aldynamica.item.text=Item:
+context.aldynamica.block.text=Block:
+context.aldynamica.tile.text=Tile:
+context.aldynamica.entity.text=Entity:
+context.aldynamica.world.text=World:
+context.aldynamica.position.text=Position:
