@@ -3,10 +3,12 @@ package aldynamica.util;
 import java.util.ArrayList;
 
 import aldynamica.root.Main;
+import aldynamica.util.ExceptionManager.EnumSpecial;
 import aldynamica.util.T9n.EnumGroups;
 import aldynamica.util.T9n.EnumGroups.Context;
 import aldynamica.util.T9n.ILocGroupValues;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -171,7 +173,8 @@ public class ExceptionManager {
     public enum EnumSpecial {
         REMAPPING("Found a missing ID without any possible replacement."),
         SORTING("Caught an exception while sorting items in the creative tab."),
-        REFRESHING("Tried to refresh the localization file in a non-development environment.");
+        REFRESHING("Tried to refresh the localization in a non-development environment."),
+        COMBINING("Exceeded the permissible limit of state combinations.");
 
         private String message;
 
@@ -187,6 +190,10 @@ public class ExceptionManager {
 
     public static String getSpecial(EnumSpecial type) {
         return new String(Main.MODID + ": " + type.getMessage() + " " + "This is not an expected behavior. Please report this to the mod author: " + Main.GITHUB);
+    }
+
+    public static void crash(EnumSpecial type) {
+        throw new IndexOutOfBoundsException(ExceptionManager.getSpecial(type));
     }
 
 }

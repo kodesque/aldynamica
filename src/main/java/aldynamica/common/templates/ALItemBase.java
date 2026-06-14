@@ -2,13 +2,14 @@ package aldynamica.common.templates;
 
 import aldynamica.api.EnumLangSection;
 import aldynamica.api.EnumSortGroup;
-import aldynamica.api.IAldynamicaNative;
+import aldynamica.api.IAldynamicaItem;
 import aldynamica.common.init.ItemInit;
 import aldynamica.root.Main;
+import aldynamica.util.CommonBlockStates;
 import aldynamica.util.ContextWrapper;
-import aldynamica.util.T9n;
 import aldynamica.util.ExceptionManager.ContextBuilder;
 import aldynamica.util.ExceptionManager.ExceptionContext;
+import aldynamica.util.T9n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,11 +20,12 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class ALItemBase extends Item implements IAldynamicaNative {
+public class ALItemBase extends Item implements IAldynamicaItem {
 
     private EnumSortGroup type;
+    private boolean isTool;
 
-    public ALItemBase(String name, EnumSortGroup group) {
+    public ALItemBase(String name, EnumSortGroup group, boolean isTool) {
         this.setRegistryName(name);
         this.setTranslationKey(T9n.simpleKey(name, EnumLangSection.ITEMS));
         this.type = group;
@@ -96,6 +98,11 @@ public class ALItemBase extends Item implements IAldynamicaNative {
 
 
         return new ActionResult<ItemStack>(EnumActionResult.PASS, playerIn.getHeldItem(handIn));
+    }
+
+    @Override
+    public boolean isTool() {
+        return this.isTool;
     }
 
 }

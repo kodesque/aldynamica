@@ -185,20 +185,20 @@ public class T9n {
                     }
                 }
 
-                Integer insertIndex = null;
+                Integer insert = null;
 
                 for (int i = start + 1; i < end; i++) {
                     if (lines.get(i).trim().isEmpty()) {
-                        insertIndex = i;
+                        insert = i;
                         break;
                     }
                 }
 
-                if (insertIndex == null) {
-                    insertIndex = end;
+                if (insert == null) {
+                    insert = end;
                 }
 
-                lines.add(insertIndex, fullkey + "=");
+                lines.add(insert, fullkey + "=");
 
                 String content = String.join(System.lineSeparator(), lines);
 

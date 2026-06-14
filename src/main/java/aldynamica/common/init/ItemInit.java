@@ -26,7 +26,7 @@ public class ItemInit {
 
         iForgeRegistry.register(ItemInit.DEBUG = new ItemDebug("debug"));
 
-        iForgeRegistry.register(ItemInit.CORPUS = new ALItemBase("corpus_aldynamica", EnumSortGroup.ITEMS));
+        iForgeRegistry.register(ItemInit.CORPUS = new ALItemBase("corpus_aldynamica", EnumSortGroup.ITEMS, false));
     }
 
     public static void initItemsRemap() {

@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemDebug extends ALItemBase{
 
     public ItemDebug(String name) {
-        super(name, EnumSortGroup.ITEMS);
+        super(name, EnumSortGroup.ITEMS, false);
     }
 
     @Override

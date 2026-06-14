@@ -8,6 +8,7 @@ import aldynamica.api.IAldynamicaNative;
 import aldynamica.common.init.ItemInit;
 import aldynamica.network.Network;
 import aldynamica.network.proxy.CommonProxy;
+import aldynamica.util.CommonBlockStates;
 import aldynamica.util.ExceptionManager;
 import aldynamica.util.ExceptionManager.ContextBuilder;
 import aldynamica.util.ExceptionManager.EnumSpecial;
@@ -56,6 +57,8 @@ public class Main {
 
     @EventHandler
     public void Init(FMLInitializationEvent event) {
+
+        CommonBlockStates.initStates();
     }
 
     @EventHandler
