@@ -86,10 +86,9 @@ public class MetaCodec {
         }
     }
 
-    public static int calculateMeta(IBlockState state) {
+    public static int encode(IBlockState state) {
 
-        ArrayList<IProperty<?>> properties =
-                new ArrayList<IProperty<?>>(state.getPropertyKeys());
+        ArrayList<IProperty<?>> properties = new ArrayList<IProperty<?>>(state.getPropertyKeys());
 
         int comb = 1;
 
@@ -244,7 +243,7 @@ public class MetaCodec {
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public static IBlockState calculateState(int meta, Block block) {
+    public static IBlockState decode(int meta, Block block) {
 
         IBlockState state = block.getDefaultState();
 

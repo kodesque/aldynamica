@@ -39,13 +39,13 @@ public class ALBlockBase extends Block implements IAldynamicaBlock {
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
-        return MetaCodec.calculateState(meta, this);
+        return MetaCodec.decode(meta, this);
     }
 
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return MetaCodec.calculateMeta(state);
+        return MetaCodec.encode(state);
     }
 
 }
